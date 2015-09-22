@@ -11,7 +11,7 @@ integrantes do grupo possuem horários bem distintos e seria mais fácil fazermo
 a reunião apenas uma vez por semana devido a muitos conflitos de horário. Tais 
 reuniões serão feitas via Skype.
 
-Scrum
+#Scrum
 
 O Scrum é um framework de desenvolvimento iterativo e incremental que pode ser 
 utilizado para o gerenciamento de projetos e desenvolvimento de software ágil. 
@@ -34,7 +34,7 @@ implementadas em uma Sprint Review Meeting. Finalmente, é feito uma Sprint
 Retrospective e a equipe parte para o planejamento do próximo Sprint. Assim 
 recomeçamos o ciclo.
 
-Trello
+#Trello
 
 Para podermos controlar e nos organizar ao longo das sprints do projeto, 
 utilizaremos a ferramenta Trello. O acesso ao quadro do Trello pode ser 
