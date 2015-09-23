@@ -10,11 +10,14 @@ A seguir, temos um pequeno e simples template para a escrita dos relatórios sem
 
 Membro: Alex Romanov
 
-O que fez durante a semana?<br />
-/tab/Durante a semana eu implementei . . .
+O que fez durante a semana?
 
-Quais foram as dificuldades?<br />
-/tab/Durante a semana eu tive dificuldades com . . . 
+> Durante a semana eu implementei . . .
 
-O que pretende fazer na próxima semana?<br />
-/tab/Durante a próxima semana eu pretendo . . . 
+Quais foram as dificuldades?
+
+> Durante a semana eu tive dificuldades com . . . 
+
+O que pretende fazer na próxima semana?
+
+> Durante a próxima semana eu pretendo . . . 
