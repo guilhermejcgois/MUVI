@@ -1,0 +1,45 @@
+<%@ page pageEncoding="UTF-8" %>
+<section>
+	<aside>
+		<c:if test="${!isHome}">
+			<div>MENU</div>
+		</c:if>
+	</aside>
+	<section>
+		<header>
+			<div id="logo">Museu Virtual</div>
+		</header>
+		<nav>
+			<span>Cenários</span>
+			<ol>
+				<li>
+					<span>Cenário de Exemplo 1</span>
+					<span class="menu-scenario-icon"></span>
+					<ul class="menu-scenario-objects">
+						<li><a href="">Pirâmide</a></li>
+						<li><a href="">Dromedário</a></li>
+						<li><a href="">Olho de Osíris</a></li>
+					</ul>
+				</li>
+				<li>
+					<span>Cenário de Exemplo 1</span>
+					<span class="menu-scenario-icon"></span>
+					<ul class="menu-scenario-objects">
+						<li><a href="">Pirâmide</a></li>
+						<li><a href="">Dromedário</a></li>
+						<li><a href="">Olho de Osíris</a></li>
+					</ul>
+				</li>
+			</ol>
+		</nav>
+		<footer>
+			<span>Sobre</span>
+			<ul>
+				<li><a href="">O projeto</a></li>
+				<li><a href="">O museu</a></li>
+				<li><a href="">A equipe</a></li>
+			</ul>
+		</footer>
+	</section>
+</section>
+<div id="hide-content"></div>
