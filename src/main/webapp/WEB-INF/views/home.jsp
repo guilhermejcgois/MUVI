@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>MUVI - Home</title>
-		
-		<c:url value="/resources/css/main.css" var="maincss"/>
-		<link href="${maincss}" rel="stylesheet">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>MUVI - Home</title>
 
-		<c:url value="/resources/css/home.css" var="homecss"/>
-		<link href="${homecss}" rel="stylesheet">
-	</head>
+        <c:url value="/resources/css/main.css" var="maincss"/>
+        <link href="${maincss}" rel="stylesheet">
+
+        <c:url value="/resources/css/home.css" var="homecss"/>
+        <link href="${homecss}" rel="stylesheet">
+    </head>
     <body>
         <section>
             <article>

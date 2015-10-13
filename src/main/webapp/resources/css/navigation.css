@@ -1,67 +1,59 @@
-nav.nav-navigation {
+#object-section nav {
 	position: absolute;
 	top: 10px;
 	left: calc(50% - ((52px + 102px + 52px) / 2));
 }
-nav.nav-navigation ul {
+#object-section nav ul {
 	margin: 0;
 	padding: 0;
 	text-align: center;
 }
-nav.nav-navigation ul li {
+#object-section nav li {
 	display: inline-block;
 }
-nav.nav-navigation li div {
+#object-section nav div {
 	border: solid #ccc 1px;
 	width: 50px;
 	height: 30px;
 	padding-top: 10px;
 }
-a.nav-sce-btn {
-	visibility: hidden;
-}
-nav.nav-navigation li div:not(.nav-sce-location):hover {
+#object-section div:not(.nav-sce-location):hover {
 	background-color: #ddd;
 	cursor: pointer;
 }
-nav.nav-navigation li div.nav-sce-location {
+#object-section div.nav-sce-location {
 	width: 100px;
 }
-#backto:hover {
+a.nav-sce-btn {
+	visibility: hidden;
+}
+#backto.first {
 	background-color: rgba(0, 0, 0, 0);
 	cursor: default;
 }
-#backto1, #backto2, #backto3 {
-	background-image: url(glyphicons-171-step-backward.png);
-	background-repeat: no-repeat;
-	background-position: center;
-}
-#goto2, #goto3, #goto4 {
-	background-image: url(glyphicons-179-step-forward.png);
+#backto {
+	background-image: url(../img/glyphicons-171-step-backward.png);
 	background-repeat: no-repeat;
 	background-position: center;
 }
 #goto {
-	background-image: url(glyphicons-178-fast-forward.png);
+	background-image: url(../img/glyphicons-179-step-forward.png);
 	background-repeat: no-repeat;
 	background-position: center;
 }
-img {
-	position: absolute;
-	top: -20px;
-	left: 49%;
+#goto.last {
+	background-image: url(../img/glyphicons-178-fast-forward.png);
+	background-repeat: no-repeat;
+	background-position: center;
 }
-section#obj1 > article,
-section#obj2 > article,
-section#obj3 > article,
-section#obj4 > article {
+#object-section > article {
 	position: relative;
 	width: 80%;
 	margin-top: -3%;
 	margin-left: 10%;
 	height: 100%;
 }
-section > article > section {
+#object-section section {
 	position: relative;
 	margin-top: 14%;
 	margin-left: 5%;
@@ -72,34 +64,34 @@ section > article > section {
 	background-color: rgba(127, 127, 127, 0.3);
 	border-radius: 10px;
 }
-section header {
+#object-section header {
 	height: 10%;
 	width: 90%;
 }
-section header h1 {
+#object-section h1 {
 	font-size: 24px;
 	margin: 15px 0px 5px 0px;
 }
-section article.objtext {
+#object-section #object-text {
 	position: absolute;
 	background-color: rgba(127, 127, 127, 0.5);
 	top: 9%;
 	width: 87%;
 	height: 58%;
 }
-section article div {
+#object-text div {
 	overflow-y: scroll;
 	height: 58%;
 	max-height: 58%;
 	padding: 10px;
 	border-radius: 7px;
 }
-section article a {
+#object-text a {
 	position: absolute;
 	margin-left: 58%;
 	font-size: 14px;
 }
-section footer {
+#object-section footer {
 	position: absolute;
 	margin-top: 50%;
 	width: 87%;
@@ -107,10 +99,16 @@ section footer {
 	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 3px;
 }
-section footer div {
+#object-section footer div {
+	overflow-y: scroll;
 	height: 100%;
-	width: 94.5%;
+	width: 100%;
 	border-radius: 3px;
+}
+#object-section img {
+	position: absolute;
+	top: -20px;
+	left: 49%;
 }
 .hide {
 	display: none;

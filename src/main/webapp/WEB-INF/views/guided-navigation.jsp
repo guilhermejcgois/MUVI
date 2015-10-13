@@ -9,17 +9,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>MUVI</title>
+        <title>MUVI - Visita Guiada</title>
+        
+        <c:url value="/resources/css/main.css" var="maincss"/>
+        <link href="${maincss}" rel="stylesheet">
+
+        <c:url value="/resources/css/menu.css" var="menucss"/>
+        <link href="${menucss}" rel="stylesheet">
+        
+        <c:url value="/resources/css/navigation.css" var="navigationcss"/>
+        <link href="${navigationcss}" rel="stylesheet">
+
     </head>
     <body>
-		<c:import url="../jspf/menu.jspf" />
+        <%@ include file="../jspf/menu.jspf" %>
 
-		<section id="obj1">
-            <nav class="nav-navigation">
+        <section id="object-section">
+            <nav>
                 <ul>
-                    <li class="hide-li"><div id="backto"><a class="nav-sce-btn">#</a></div></li>
+                    <li><div id="backto" class="first"><a class="nav-sce-btn">#</a></div></li>
                     <li><div class="nav-sce-location">1 de 4</div></li>
-                    <li><div id="goto2"><a class="nav-sce-btn">#</a></div></li>
+                    <li><div id="goto"><a class="nav-sce-btn">#</a></div></li>
                 </ul>
             </nav>
             <article>
@@ -27,7 +37,7 @@
                     <header>
                         <h1>Como tudo Começou</h1>
                     </header>
-                    <article class="objtext">
+                    <article id="object-text">
                         <div>
                             Antigamente não existiam carros, ônibus ou caminhões. As viagens eram feitas a pé e as cargas e pessoal eram transportadas nas costas dos escravos índios e negros.<br>
                             As poucas cidades viviam isoladas, com dificuldades para adquirir alimentos e outros produtos
@@ -43,5 +53,8 @@
                 <img src="sala troperismo.jpg"></img>
             </article>
         </section>
+        
+        <c:url value="/resources/js/navigation.js" var="navigationjs" />
+        <script src="${navigationjs}" type="text/javascript"></script>
     </body>
 </html>

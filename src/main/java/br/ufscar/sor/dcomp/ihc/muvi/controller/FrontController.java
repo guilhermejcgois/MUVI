@@ -1,6 +1,7 @@
 package br.ufscar.sor.dcomp.ihc.muvi.controller;
 
 import com.lpsmuseum.service.MuseumService;
+import com.lpsmuseum.service.builders.MuseumBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,12 +21,13 @@ public class FrontController {
 	}
 	
 	@RequestMapping("/")
-	public ModelAndView home() {
+	public ModelAndView home() throws Exception {
 		modelAndView = new ModelAndView("home");
 				
 		System.out.println("Inicializando museu...");
 		
-		modelAndView.addObject("museum", museumService.findById(1L));
+		//modelAndView.addObject("museum", museumService.findById(1L));
+		modelAndView.addObject("museum", new MuseumBuilder().build("Museu"));
 		
 		return modelAndView;
 	}
@@ -33,8 +35,19 @@ public class FrontController {
 	@RequestMapping("visita-guiada")
 	public ModelAndView navegacaoGuiada() {
 		modelAndView = new ModelAndView("guided-navigation");
+                
+                System.out.println("Iniciando navegaçao guiada...");
 		
 		return modelAndView;
 	}
+        
+        @RequestMapping("visita-guiada/fazer-desafio")
+        public ModelAndView cenarioFinalizado() {
+            modelAndView = new ModelAndView("notice");
+            
+            System.out.println("O cenario acabou...");
+            
+            return modelAndView;
+        }
 	
 }

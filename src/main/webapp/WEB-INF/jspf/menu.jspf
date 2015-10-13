@@ -1,53 +1,49 @@
-<%@ page pageEncoding="UTF-8" %>
-<c:url value="/resources/css/menu.css" var="menucss"/>
-<link href="${menucss}" rel="stylesheet">
-
 <section id="menu">
-	<section id="menu-section">
-		<header>
-		</header>
-		<article>
-			<nav>
-				<ul>
-					<li>Cen√°rios</li>
-					<li>
-						<ul>
-							<li id="menu-li1" class="clickable">Cen√°rio Ex. 1</li>
-							<li id="menu-lili1">
-								<ul>
-                                    <li>Como tudo come√ßou</li>
+    <section id="menu-section">
+        <header>
+        </header>
+        <article>
+            <nav>
+                <ul>
+                    <li>Cen·rios</li>
+                    <li>
+                        <ul>
+                            <li id="menu-li1" class="clickable">Cen·rio Ex. 1</li>
+                            <li id="menu-lili1">
+                                <ul>
+                                    <li>Como tudo comeÁou</li>
                                     <li>O tropeiro</li>
                                     <li>Traje do tropeiro</li>
                                     <li>A tropa</li>
                                 </ul>
-							</li>
-							<li id="menu-li2" class="clickable">Cen√°rio Ex. 2</li>
-							<li id="menu-lili2"><ul>
+                            </li>
+                            <li id="menu-li2" class="clickable">Cen·rio Ex. 2</li>
+                            <li id="menu-lili2"><ul>
                                     <li>A viagem</li>
                                     <li>O pouso</li>
                                     <li>As feiras de sorocaba</li>
                                 </ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-		</article>
-		<footer>
-			<ul>
-				<li>Sobre</li>
-				<li>
-					<ul>
-						<li>O projeto</li>
-						<li>O munseu</li>
-						<li>A equipe</li>
-					</ul>
-				</li>
-			</ul>
-		</footer>
-	</section>
-	<div id="openclose-div">
-		<input id="menu-btn" type="button" value="MENU" />
-	</div>
-	<div id="modal-div"></div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </article>
+        <footer>
+            <ul>
+                <li>Sobre</li>
+                <li>
+                    <ul>
+                        <li>O projeto</li>
+                        <li>O munseu</li>
+                        <li>A equipe</li>
+                    </ul>
+                </li>
+            </ul>
+        </footer>
+    </section>
+    <div id="openclose-div">
+        <input id="menu-btn" type="button" value="MENU" />
+    </div>
+    <div id="modal-div"></div>
 </section>
