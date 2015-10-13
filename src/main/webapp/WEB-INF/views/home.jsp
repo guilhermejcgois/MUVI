@@ -5,13 +5,30 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>MUVI - Home</title>
-    </head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>MUVI - Home</title>
+		
+		<c:url value="/resources/css/main.css" var="maincss"/>
+		<link href="${maincss}" rel="stylesheet">
+
+		<c:url value="/resources/css/home.css" var="homecss"/>
+		<link href="${homecss}" rel="stylesheet">
+	</head>
     <body>
-        <h1>Hello World!</h1>
+        <section>
+            <article>
+                <h1>${museum.name}</h1>
+                <div>
+                    <a class="btn" href="/muvi/visita-aleatoria"><p>Aleatória</p></a><!--
+                    --><a class="btn" href="/muvi/visita-guiada"><p>Guiada</p></a>
+                </div>
+            </article>
+        </section>
+        <script>
+        </script>
     </body>
 </html>

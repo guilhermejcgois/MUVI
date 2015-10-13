@@ -1,0 +1,128 @@
+nav.nav-navigation {
+	position: absolute;
+	top: 10px;
+	left: calc(50% - ((52px + 102px + 52px) / 2));
+}
+nav.nav-navigation ul {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+nav.nav-navigation ul li {
+	display: inline-block;
+}
+nav.nav-navigation li div {
+	border: solid #ccc 1px;
+	width: 50px;
+	height: 30px;
+	padding-top: 10px;
+}
+a.nav-sce-btn {
+	visibility: hidden;
+}
+nav.nav-navigation li div:not(.nav-sce-location):hover {
+	background-color: #ddd;
+	cursor: pointer;
+}
+nav.nav-navigation li div.nav-sce-location {
+	width: 100px;
+}
+#backto:hover {
+	background-color: rgba(0, 0, 0, 0);
+	cursor: default;
+}
+#backto1, #backto2, #backto3 {
+	background-image: url(glyphicons-171-step-backward.png);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#goto2, #goto3, #goto4 {
+	background-image: url(glyphicons-179-step-forward.png);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#goto {
+	background-image: url(glyphicons-178-fast-forward.png);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+img {
+	position: absolute;
+	top: -20px;
+	left: 49%;
+}
+section#obj1 > article,
+section#obj2 > article,
+section#obj3 > article,
+section#obj4 > article {
+	position: relative;
+	width: 80%;
+	margin-top: -3%;
+	margin-left: 10%;
+	height: 100%;
+}
+section > article > section {
+	position: relative;
+	margin-top: 14%;
+	margin-left: 5%;
+	padding-top: 0.3%;
+	padding-left: 3%;
+	width: 38%;
+	height: 100%;
+	background-color: rgba(127, 127, 127, 0.3);
+	border-radius: 10px;
+}
+section header {
+	height: 10%;
+	width: 90%;
+}
+section header h1 {
+	font-size: 24px;
+	margin: 15px 0px 5px 0px;
+}
+section article.objtext {
+	position: absolute;
+	background-color: rgba(127, 127, 127, 0.5);
+	top: 9%;
+	width: 87%;
+	height: 58%;
+}
+section article div {
+	overflow-y: scroll;
+	height: 58%;
+	max-height: 58%;
+	padding: 10px;
+	border-radius: 7px;
+}
+section article a {
+	position: absolute;
+	margin-left: 58%;
+	font-size: 14px;
+}
+section footer {
+	position: absolute;
+	margin-top: 50%;
+	width: 87%;
+	height: 17%;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 3px;
+}
+section footer div {
+	height: 100%;
+	width: 94.5%;
+	border-radius: 3px;
+}
+.hide {
+	display: none;
+}
+.hide-li div {
+	border-width: 0;
+	color: #eee;
+}
+.hide-li div:not(.nav-sce-location):hover {
+	background-color: #eee;
+	cursor: default;
+}
+div.nav-sce-location {
+	cursor: default;
+}

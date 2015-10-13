@@ -1,0 +1,117 @@
+section#menu section {
+	border: solid black 1px;
+	width: 0;
+	z-index: 10;
+}
+section#menu-section.show-transition {
+	width: 350px;
+	transition: width 1s;
+}
+section#menu-section>header,
+section#menu-section>article,
+section#menu-section>footer,
+div#modal-div {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 1s linear;
+	z-index: 9;
+}
+section#menu-section>header.show-transition,
+section#menu-section>article.show-transition,
+section#menu-section>footer.show-transition,
+div#modal-div.show-transition {
+	visibility: visible;
+	opacity: 1;
+	transition: background-color 1s linear;
+}
+section#menu section, section#menu div {
+	position: absolute;
+	height: 100%;
+}
+section#menu-section header {
+	background-image: url(logo.jpe);
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+section#menu-section ul {
+	padding-left: 20px;
+}
+section#menu-section li li {
+	width: 250px;
+	margin-top: 5px;
+}
+section#menu-section li li li {
+	width: 230px;
+	margin-top: 5px;
+}
+section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n+1) {
+	background-image: url(glyphicons-602-chevron-down.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n+1):hover {
+	font-size: 20px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n+1).opened {
+	background-image: url(glyphicons-601-chevron-up.png);
+}
+section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n) {
+	display: none;
+}
+section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n).show {
+	display: block;
+	transition: display 1s;
+}
+div#openclose-div {
+	width: 130px;
+	transition: margin-left 1s;
+	z-index: 10;
+}
+div#openclose-div.opened {
+	margin-left: 350px;
+	transition: margin-left 1s;
+}
+div#openclose-div input {
+	border: none;
+	width: 130px;
+	font-size: 30px;
+	text-align: right;
+	margin-top: 1px;
+	background-image: url(glyphicons-517-menu-hamburger.png);
+	background-position: left;
+	background-repeat: no-repeat;
+}
+div#openclose-div input.opened {
+	background-image: url(glyphicons-208-remove-2.png);
+}             
+div#modal-div {
+	background-color: rgba(0, 0, 0, 0.9);
+	transition: background-color 1s linear;
+	width: 100%;
+}
+section#menu-section {
+	background-color: #aaa;
+}
+section#menu-section header {
+	background-color: white;
+	height: 150px;
+	padding: 10px 17px;
+}
+section#menu-section header img {
+	position: inherit;
+}
+section#menu-section article {
+	z-index: 99;
+	height: calc(100% - 150px - 170px);
+}
+section#menu-section footer {
+	background-color: #777;
+	height: 150px;
+	width: inherit;
+	margin-top: 0;
+}
+section#menu footer {
+	padding-top: 5px;
+}
