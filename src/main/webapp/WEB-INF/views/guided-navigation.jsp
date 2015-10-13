@@ -10,14 +10,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>MUVI - Visita Guiada</title>
-        
-        <c:url value="/resources/css/main.css" var="maincss"/>
-        <link href="${maincss}" rel="stylesheet">
 
+        <c:url value="/resources/css/main.css" var="maincss"/>
         <c:url value="/resources/css/menu.css" var="menucss"/>
-        <link href="${menucss}" rel="stylesheet">
-        
         <c:url value="/resources/css/navigation.css" var="navigationcss"/>
+
+        <c:url value="/resources/js/DOMUtils.js" var="domutilsjs" />
+        <c:url value="/resources/js/MUVI.js" var="muvijs" />
+        <c:url value="/resources/js/navigation.js" var="navigationjs" />
+        
+        <link href="${maincss}" rel="stylesheet">
+        <link href="${menucss}" rel="stylesheet">
         <link href="${navigationcss}" rel="stylesheet">
 
     </head>
@@ -44,7 +47,7 @@
                             de fora e também dificuldades para transportar o que produziam.<br>
                             Foi nessa época no final do século XVII, que surgiram os tropeiros.
                         </div>
-                        <a class="amore" href="#">Para saber mais...</a>
+                        <a id="amore" href="#">Para saber mais...</a>
                     </article>
                     <footer class="hide">
                         <div>Tropeiro, condutor de tropa, arrieiro ou bruaqueiro é a designação dada aos condutores de tropas ou comitivas de muares e cavalos entre as regiões de produção e os centros consumidores no Brasil a partir do século XVII. Mais ao sul do Brasil, também são conhecidos como carreteiros devido às carretas com as quais trabalhavam.</div>
@@ -54,7 +57,8 @@
             </article>
         </section>
         
-        <c:url value="/resources/js/navigation.js" var="navigationjs" />
+        <script src="${domutilsjs}" type="text/javascript"></script>
+        <script src="${muvijs}" type="text/javascript"></script>
         <script src="${navigationjs}" type="text/javascript"></script>
     </body>
 </html>

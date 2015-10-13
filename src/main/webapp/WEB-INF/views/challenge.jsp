@@ -12,13 +12,16 @@
         <title>MUVI - Desafio!</title>
 
     <c:url value="/resources/css/main.css" var="maincss"/>
-    <link href="${maincss}" rel="stylesheet">
-
-    <c:url value="/resources/css/challenge.css" var="challengecss"/>
-    <link href="${challengecss}" rel="stylesheet">
-
     <c:url value="/resources/css/menu.css" var="menucss"/>
+    <c:url value="/resources/css/challenge.css" var="challengecss"/>
+
+    <c:url value="/resources/js/DOMUtils.js" var="domutilsjs" />
+    <c:url value="/resources/js/MUVI.js" var="muvijs" />
+    <c:url value="/resources/js/challenge.js" var="challengejs" />
+
+    <link href="${maincss}" rel="stylesheet">
     <link href="${menucss}" rel="stylesheet">
+    <link href="${challengecss}" rel="stylesheet">
 </head>
 <body>
     <%@ include file="../jspf/menu.jspf" %>
@@ -47,7 +50,8 @@
         </article>
     </section>
 
-<c:url value="/resources/js/navigation.js" var="navigationjs" />
-<script src="${navigationjs}" type="text/javascript"></script>
+    <script src="${domutilsjs}" type="text/javascript"></script>
+    <script src="${muvijs}" type="text/javascript"></script>
+    <script src="${challengejs}" type="text/javascript"></script>
 </body>
 </html>
