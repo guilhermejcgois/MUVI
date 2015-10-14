@@ -31,32 +31,30 @@
             <nav>
                 <ul>
                     <li><div id="backto" class="first"><a class="nav-sce-btn">#</a></div></li>
-                    <li><div class="nav-sce-location">1 de 4</div></li>
+                    <li><div id="state" class="nav-sce-location"></div></li>
                     <li><div id="goto"><a class="nav-sce-btn">#</a></div></li>
                 </ul>
             </nav>
             <article>
                 <section>
                     <header>
-                        <h1>Como tudo Começou</h1>
+                        <h1 id="title"></h1>
                     </header>
                     <article id="object-text">
-                        <div>
-                            Antigamente não existiam carros, ônibus ou caminhões. As viagens eram feitas a pé e as cargas e pessoal eram transportadas nas costas dos escravos índios e negros.<br>
-                            As poucas cidades viviam isoladas, com dificuldades para adquirir alimentos e outros produtos
-                            de fora e também dificuldades para transportar o que produziam.<br>
-                            Foi nessa época no final do século XVII, que surgiram os tropeiros.
-                        </div>
+                        <div></div>
                         <a id="amore" href="#">Para saber mais...</a>
                     </article>
                     <footer class="hide">
-                        <div>Tropeiro, condutor de tropa, arrieiro ou bruaqueiro é a designação dada aos condutores de tropas ou comitivas de muares e cavalos entre as regiões de produção e os centros consumidores no Brasil a partir do século XVII. Mais ao sul do Brasil, também são conhecidos como carreteiros devido às carretas com as quais trabalhavam.</div>
+                        <div id="divmore"></div>
                     </footer>
                 </section>
-                <img src="sala troperismo.jpg"></img>
+                <img id="image" src=""></img>
             </article>
         </section>
         
+        <script>
+            var numItems = ${numItems};
+        </script>
         <script src="${domutilsjs}" type="text/javascript"></script>
         <script src="${muvijs}" type="text/javascript"></script>
         <script src="${navigationjs}" type="text/javascript"></script>
