@@ -21,7 +21,7 @@ var MUVI = MUVI || {
             //DOMUtils.removeClass(menuSection.children[1], "hide-transition");
             DOMUtils.addClass(menuSection.children[1], "show-transition");
             //DOMUtils.removeClass(menuSection.children[2], "hide-transition");
-            addDOMUtils.Class(menuSection.children[2], "show-transition");
+            DOMUtils.addClass(menuSection.children[2], "show-transition");
         } else {
             console.log('Fechando o menu');
             DOMUtils.removeClass(openCloseDiv, "opened");

@@ -1,8 +1,10 @@
 (function () {
-    document.getElementById('openclose-div').addEventListener("click", MUVI.menu);
+	document.getElementById('openclose-div').addEventListener("click", MUVI.menu);
 
-    document.getElementById('modal-div').addEventListener("click", MUVI.menu);
+	document.getElementById('modal-div').addEventListener("click", MUVI.menu);
 
-    document.getElementById('menu-li').addEventListener("click", MUVI.cenariosMenu);
+	var clickables = document.getElementsByClassName('clickable');
+	for (var i = 0; i < clickables.lengthgth; i++)
+		clickables[i].addEventListener("click", MUVI.cenariosMenu);
 
 })();

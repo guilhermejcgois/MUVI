@@ -24,7 +24,7 @@
                     </article>
                     <footer>
                         <c:forEach var="action" items="${actions}">
-                            <a href="${action.key}">${action.value}</a>
+                            <a href="${action.value}">${action.key}</a>
                         </c:forEach>
                     </footer>
                 </section>

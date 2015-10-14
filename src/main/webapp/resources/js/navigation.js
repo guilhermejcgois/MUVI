@@ -29,11 +29,11 @@
         };
         
         if (next) {
-            xhr.open("POST", "/visita-guiada/proximo", false);
+            xhr.open("POST", "/muvi/visita-guiada/proximo", false);
             
             currentItem++;
         } else {
-            xhr.open("POST", "/visita-guiada/anterior", false);
+            xhr.open("POST", "/muvi/visita-guiada/anterior", false);
             currentItem--;
         }
         
@@ -67,6 +67,6 @@
             addClass(footer, "hide");
     });
     
-    load(true);
+    //load(true);
 
 })();
