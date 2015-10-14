@@ -46,7 +46,7 @@
                         <a id="amore" href="#">Para saber mais...</a>
                     </article>
                     <footer class="hide">
-                        <div id="divmore">${items.toknowmore.text}</div>
+                        <div id="divmore">${items.toKnowMore.text}</div>
                     </footer>
                 </section>
                 <img id="image" src="${items.image.urlAddress}"></img>
@@ -57,7 +57,7 @@
             var numItems = ${numItems};
 			
 			if (${atual} == 1)
-				document.getElementById('abackto').href = "/muvi/visita-guiada?scenarioId=" + ${scenarioId - 1});
+				document.getElementById('abackto').href = "/muvi/visita-guiada?scenarioId=" + ${scenarioId - 1};
 			else if (${atual} == numItems && ${hasChallenge})
 				document.getElementById('abackto').href = "/muvi/visita-guiada/fazer-desafio";
 			

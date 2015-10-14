@@ -66,6 +66,7 @@ public class FrontController {
 		modelAndView.addObject("numItems", navigationItems.size());
 		modelAndView.addObject("museum", museum);
 		modelAndView.addObject("items", navigationItems.get(++navigationIndex));
+		System.out.println(navigationItems.get(navigationIndex).getImage().getUrlAddress());
 		modelAndView.addObject("atual", navigationIndex + 1);
 		modelAndView.addObject("scenarioId", scenarioAtual = scenarioId.intValue());
 		modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);

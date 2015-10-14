@@ -61,10 +61,10 @@
         var a = event.target || event.srcElement;
         var aparentparent = a.parentNode.parentNode;
         var footer = aparentparent.children[2];
-        if (containClass(footer, "hide"))
-            removeClass(footer, "hide");
+        if (DOMUtils.containClass(footer, "hide"))
+            DOMUtils.removeClass(footer, "hide");
         else
-            addClass(footer, "hide");
+            DOMUtils.addClass(footer, "hide");
     });
     
     //load(true);

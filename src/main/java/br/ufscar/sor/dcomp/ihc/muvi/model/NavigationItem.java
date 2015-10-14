@@ -37,15 +37,9 @@ public class NavigationItem {
     }
 
     public boolean belongs(MuseologicalObject candidate) {
-        if (text != null && text.getName().equals(candidate.getName())) {
-            return true;
-        }
-        if (image != null && image.getName().equals(candidate.getName())) {
-            return true;
-        }
-        if (toKnowMore != null && toKnowMore.getName().equals(candidate.getName())) {
-            return true;
-        }
+		if (getName().equals(candidate.getName()))
+			return true;
+		
         return false;
     }
 
@@ -61,10 +55,38 @@ public class NavigationItem {
                 } else {
                     toKnowMore = (Text) candidate;
                 }
+				
+				return true;
             }
         }
 
         return false;
     }
+
+	public String getName() {
+		if (text != null)
+			return text.getName();
+		else if (image != null)
+			return image.getName();
+		else if (toKnowMore != null)
+			return toKnowMore.getName();
+		return null;
+	}
+	
+	public void print() {
+		if (text != null)
+			System.out.println(text.getName());
+		else if (image != null)
+			System.out.println(image.getName());
+		else
+			System.out.println(toKnowMore.getName());
+		
+		if (text != null)
+			System.out.println(text.getText());
+		if (image != null)
+			System.out.println(image.getUrlAddress());
+		if (toKnowMore != null)
+			System.out.println(toKnowMore.getText());
+	}
 
 }
