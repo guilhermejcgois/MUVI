@@ -23,7 +23,7 @@
             <article>
                 <h1>${museum.name}</h1>
                 <div>
-                    <a class="btn" href="/muvi/visita-aleatoria"><p>Aleatória</p></a><!--
+                    <a class="btn" href="#"><p>Aleatória</p></a><!--
                     --><a class="btn" href="/muvi/visita-guiada?scenarioId=${museum.scenarios[0].id}"><p>Guiada</p></a>
                 </div>
             </article>

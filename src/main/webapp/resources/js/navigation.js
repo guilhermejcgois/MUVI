@@ -1,5 +1,5 @@
 (function () {
-    var currentItem = 0;
+    var currentItem = 1;
     
     var load = function (next) {
         var xhr;
@@ -32,9 +32,21 @@
             xhr.open("POST", "/muvi/visita-guiada/proximo", false);
             
             currentItem++;
+            
+            var goto = document.getElementById('goto');
+            if (currentItem === numItems)
+                DOMUtils.addClass(goto, 'hide');
+            else if (DOMUtils.containClass(goto, 'hide'))
+                DOMUtils.removeClass(goto, 'hide');
         } else {
             xhr.open("POST", "/muvi/visita-guiada/anterior", false);
             currentItem--;
+            
+            var backto = document.getElementById('backto');
+            if (currentItem === 1)
+                DOMUtils.addClass(backto, 'hide');
+            else if (DOMUtils.containClass(backto, 'hide'))
+                DOMUtils.removeClass(backto, 'hide');
         }
         
         xhr.send();
@@ -51,10 +63,12 @@
 
     document.getElementById('goto').addEventListener("click", function (event) {
         console.log('goto clicked');
+        load(true);
     });
 
     document.getElementById('backto').addEventListener("click", function (event) {
         console.log('backto clicked');
+        load(false);
     });
 
     document.getElementById('amore').addEventListener("click", function (event) {

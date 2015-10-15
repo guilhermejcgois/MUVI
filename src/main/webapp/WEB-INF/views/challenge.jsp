@@ -30,7 +30,7 @@
         <article>
             <section>
                 <header>
-                    <h1></h1>
+                    <h1 id="title"></h1>
                 </header>
                 <article id="challenge-alternatives">
                     <div id="alternative1"><span></span></div>
