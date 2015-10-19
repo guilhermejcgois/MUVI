@@ -84,12 +84,15 @@ public class FrontController {
 
 		System.out.println("Indo para os próximos objetos...");
 
-		modelAndView.addObject("numItems", navigationItems.size());
-		modelAndView.addObject("museum", museum);
-		modelAndView.addObject("items", navigationItems.get(++navigationIndex));
-		modelAndView.addObject("atual", navigationIndex + 1);
-		modelAndView.addObject("scenarioId", scenarioAtual);
-		modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
+		if ((navigationIndex + 1) < navigationItems.size()) {
+			System.out.println("Indo para os próximos objetos...");
+			modelAndView.addObject("numItems", navigationItems.size());
+			modelAndView.addObject("museum", museum);
+			modelAndView.addObject("items", navigationItems.get(++navigationIndex));
+			modelAndView.addObject("atual", navigationIndex + 1);
+			modelAndView.addObject("scenarioId", scenarioAtual);
+			modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
+		}
 
 		return modelAndView;
 	}
@@ -104,12 +107,14 @@ public class FrontController {
 
 		System.out.println("Indo para os objetos anteriores...");
 
-		modelAndView.addObject("numItems", navigationItems.size());
-		modelAndView.addObject("museum", museum);
-		modelAndView.addObject("items", navigationItems.get(--navigationIndex));
-		modelAndView.addObject("atual", navigationIndex + 1);
-		modelAndView.addObject("scenarioId", scenarioAtual);
-		modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
+		if (navigationIndex > 0) {
+			modelAndView.addObject("numItems", navigationItems.size());
+			modelAndView.addObject("museum", museum);
+			modelAndView.addObject("items", navigationItems.get(--navigationIndex));
+			modelAndView.addObject("atual", navigationIndex + 1);
+			modelAndView.addObject("scenarioId", scenarioAtual);
+			modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
+		}
 
 		return modelAndView;
 	}

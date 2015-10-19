@@ -31,7 +31,7 @@
         <section id="object-section">
             <nav>
                 <ul>
-                    <li><div id="backto" class="first"><a id="abackto" href="/muvi/visita-guiada/anterior" class="nav-sce-btn">#</a></div></li>
+                    <li><div id="backto" class="first hide"><a id="abackto" href="/muvi/visita-guiada/anterior" class="nav-sce-btn">#</a></div></li>
                     <li><div id="state" class="nav-sce-location">${atual} de ${numItems}</div></li>
                     <li><div id="goto"><a id="agoto" href="visita-guiada/proximo" class="nav-sce-btn">#</a></div></li>
                 </ul>
