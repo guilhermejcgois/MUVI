@@ -3,6 +3,7 @@ package br.ufscar.sor.dcomp.ihc.muvi.model;
 import com.lpsmuseum.dto.MuseologicalObject;
 import com.lpsmuseum.dto.object.Image;
 import com.lpsmuseum.dto.object.Text;
+import java.util.List;
 
 /**
  *
@@ -14,13 +15,49 @@ public class NavigationItem {
     private Image image;
     private Text toKnowMore;
 
-    public NavigationItem(MuseologicalObject museologicalObject) {
+    /*public NavigationItem(MuseologicalObject museologicalObject) {
         if (museologicalObject instanceof Image) {
             image = (Image) museologicalObject;
         } else if (museologicalObject.getObjectType()) {
             text = (Text) museologicalObject;
         } else {
             toKnowMore = (Text) museologicalObject;
+        }
+    }*/
+
+    public NavigationItem(List<MuseologicalObject> objects) {
+        for (MuseologicalObject object : objects) {
+            if (image == null) {
+                if (object instanceof Text) {
+                    if (text == null) {
+                        text = (Text) object;
+                    } else {
+                        text.setText(new StringBuilder()
+                                .append(text.getText())
+                                .append("\n")
+                                .append(((Text) object).getText())
+                                .substring(0));
+                    }
+                } else if (object instanceof Image) {
+                    image = (Image) object;
+                } else {
+                    throw new ClassCastException("Object object[id=" + object.getId() + "] need to be a Image or a Text");
+                }
+            } else {
+                if (object instanceof Text) {
+                    if (toKnowMore == null) {
+                        toKnowMore = (Text) object;
+                    } else {
+                        toKnowMore.setText(new StringBuilder()
+                                .append(toKnowMore.getText())
+                                .append("\n")
+                                .append(((Text) object).getText())
+                                .substring(0));
+                    }
+                } else {
+                    throw new ClassCastException("Object object need to be a Text");
+                }
+            }
         }
     }
 
@@ -37,9 +74,10 @@ public class NavigationItem {
     }
 
     public boolean belongs(MuseologicalObject candidate) {
-		if (getName().equals(candidate.getName()))
-			return true;
-		
+        if (getName().equals(candidate.getName())) {
+            return true;
+        }
+
         return false;
     }
 
@@ -55,38 +93,43 @@ public class NavigationItem {
                 } else {
                     toKnowMore = (Text) candidate;
                 }
-				
-				return true;
+
+                return true;
             }
         }
 
         return false;
     }
 
-	public String getName() {
-		if (text != null)
-			return text.getName();
-		else if (image != null)
-			return image.getName();
-		else if (toKnowMore != null)
-			return toKnowMore.getName();
-		return null;
-	}
-	
-	public void print() {
-		if (text != null)
-			System.out.println(text.getName());
-		else if (image != null)
-			System.out.println(image.getName());
-		else
-			System.out.println(toKnowMore.getName());
-		
-		if (text != null)
-			System.out.println(text.getText());
-		if (image != null)
-			System.out.println(image.getUrlAddress());
-		if (toKnowMore != null)
-			System.out.println(toKnowMore.getText());
-	}
+    public String getName() {
+        if (text != null) {
+            return text.getName();
+        } else if (image != null) {
+            return image.getName();
+        } else if (toKnowMore != null) {
+            return toKnowMore.getName();
+        }
+        return null;
+    }
+
+    public void print() {
+        if (text != null) {
+            System.out.println(text.getName());
+        } else if (image != null) {
+            System.out.println(image.getName());
+        } else {
+            System.out.println(toKnowMore.getName());
+        }
+
+        if (text != null) {
+            System.out.println(text.getText());
+        }
+        if (image != null) {
+            System.out.println(image.getUrlAddress());
+        }
+        if (toKnowMore != null) {
+            System.out.println(toKnowMore.getText());
+        }
+    }
 
 }

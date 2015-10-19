@@ -3,7 +3,6 @@ package br.ufscar.sor.dcomp.ihc.muvi.controller;
 import br.ufscar.sor.dcomp.ihc.muvi.model.NavigationItem;
 import br.ufscar.sor.dcomp.ihc.muvi.util.NavigationUtil;
 import com.lpsmuseum.dto.Museum;
-import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.dto.scenario.ScenarioChallenge;
 import com.lpsmuseum.service.MuseumService;
 import java.util.HashMap;
@@ -50,16 +49,8 @@ public class FrontController {
 
 		System.out.println("Iniciando navegaçao guiada...");
 
-		Scenario scenario = null;
-		for (Scenario sc : museum.getScenarios()) {
-			if (sc.getId() == scenarioId) {
-				scenario = sc;
-				break;
-			}
-		}
-
-		navigationItems = NavigationUtil.arrangeData(scenario.getObjects());
-		navigationIndex = -1;
+		navigationItems = NavigationUtil.arrangeData(museum.getScenarios());
+		navigationIndex = -1;   
 
 		System.out.println(navigationItems.size());
 
