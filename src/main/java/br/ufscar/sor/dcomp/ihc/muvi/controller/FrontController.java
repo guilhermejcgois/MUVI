@@ -44,7 +44,7 @@ public class FrontController {
 	}
 
 	@RequestMapping("visita-guiada")
-	public ModelAndView navegacaoGuiada(Long scenarioId) {
+	public ModelAndView navegacaoGuiada() {
 		modelAndView = new ModelAndView("guided-navigation");
 
 		System.out.println("Iniciando navegaçao guiada...");
@@ -57,9 +57,9 @@ public class FrontController {
 		modelAndView.addObject("numItems", navigationItems.size());
 		modelAndView.addObject("museum", museum);
 		modelAndView.addObject("items", navigationItems.get(++navigationIndex));
-		System.out.println(navigationItems.get(navigationIndex).getImage().getUrlAddress());
+		//System.out.println(navigationItems.get(navigationIndex).getImage().getUrlAddress());
 		modelAndView.addObject("atual", navigationIndex + 1);
-		modelAndView.addObject("scenarioId", scenarioAtual = scenarioId.intValue());
+		modelAndView.addObject("scenarioId", scenarioAtual = 0);
 		modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
 
 		return modelAndView;

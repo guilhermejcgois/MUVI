@@ -31,9 +31,9 @@
         <section id="object-section">
             <nav>
                 <ul>
-                    <li><div id="backto" class="first hide"><a id="abackto" href="/muvi/visita-guiada/anterior" class="nav-sce-btn">#</a></div></li>
+                    <li><div id="backto" class="first"><a id="abackto" href="/muvi/visita-guiada/anterior" class="nav-sce-btn">#</a></div></li>
                     <li><div id="state" class="nav-sce-location">${atual} de ${numItems}</div></li>
-                    <li><div id="goto"><a id="agoto" href="visita-guiada/proximo" class="nav-sce-btn">#</a></div></li>
+                    <li><div id="goto"><a id="agoto" href="/muvi/visita-guiada/proximo" class="nav-sce-btn">#</a></div></li>
                 </ul>
             </nav>
             <article>
@@ -53,18 +53,17 @@
             </article>
         </section>
         
-        <script>
-            var numItems = ${numItems};
-			
-			if (${atual} == 1)
-				document.getElementById('abackto').href = "/muvi/visita-guiada?scenarioId=" + ${scenarioId - 1};
-			else if (${atual} == numItems && ${hasChallenge})
-				document.getElementById('abackto').href = "/muvi/visita-guiada/fazer-desafio";
-			
-        </script>
         <script src="${domutilsjs}" type="text/javascript"></script>
         <script src="${muvijs}" type="text/javascript"></script>
 		<script src="${menujs}" type="text/javascript"></script>
         <script src="${navigationjs}" type="text/javascript"></script>
+        <script>
+            var numItems = ${numItems};
+			if (${atual} == 1)
+				DOMUtils.addClass(document.getElementById('backto'), 'hide');
+			else if (${atual} == numItems)
+				DOMUtils.addClass(document.getElementById('goto'), 'hide');
+			console.log(${items.image.urlAddress});
+        </script>
     </body>
 </html>

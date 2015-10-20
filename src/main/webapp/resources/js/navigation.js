@@ -1,7 +1,7 @@
 (function () {
 	var currentItem = 1;
 
-	var load = function (next) {
+	/*var load = function (next) {
 		var xhr;
 
 		try {
@@ -57,7 +57,7 @@
 		console.log('done');
 
 		document.getElementById('state').innerHtml = currentItem + ' de ' + numItems;
-	};
+	};*/
 
 	function shouldHideFooter(getingOutFrom) {
 		var footer = document.getElementsByTagName('footer')[0];

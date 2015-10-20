@@ -11,125 +11,127 @@ import java.util.List;
  */
 public class NavigationItem {
 
-    private Text text;
-    private Image image;
-    private Text toKnowMore;
+	private Text text;
+	private Image image;
+	private Text toKnowMore;
 
-    /*public NavigationItem(MuseologicalObject museologicalObject) {
-        if (museologicalObject instanceof Image) {
-            image = (Image) museologicalObject;
-        } else if (museologicalObject.getObjectType()) {
-            text = (Text) museologicalObject;
-        } else {
-            toKnowMore = (Text) museologicalObject;
-        }
-    }*/
+	/*public NavigationItem(MuseologicalObject museologicalObject) {
+	 if (museologicalObject instanceof Image) {
+	 image = (Image) museologicalObject;
+	 } else if (museologicalObject.getObjectType()) {
+	 text = (Text) museologicalObject;
+	 } else {
+	 toKnowMore = (Text) museologicalObject;
+	 }
+	 }*/
+	public NavigationItem(List<MuseologicalObject> objects) {
+		for (MuseologicalObject object : objects) {
+			System.out.println(object.getId());
+			if (image == null) {
+				if (object instanceof Text) {
+					System.out.println("Text:" + ((Text) object).getText());
+					if (text == null) {
+						text = (Text) object;
+					} else {
+						text.setText(new StringBuilder()
+								.append(text.getText())
+								.append("\n")
+								.append(((Text) object).getText())
+								.substring(0));
+					}
+				} else if (object instanceof Image) {
+					System.out.println("Url:" + ((Image) object).getUrlAddress());
+					image = (Image) object;
+				} else {
+					throw new ClassCastException("Object object[id=" + object.getId() + "] need to be a Image or a Text");
+				}
+			} else {
+				if (object instanceof Text) {
+					if (toKnowMore == null) {
+						toKnowMore = (Text) object;
+					} else {
+						toKnowMore.setText(new StringBuilder()
+								.append(toKnowMore.getText())
+								.append("\n")
+								.append(((Text) object).getText())
+								.substring(0));
+					}
+				} else {
+					throw new ClassCastException("Object object[id=" + object.getId() + "] need to be a Text");
+				}
+			}
+		}
+	}
 
-    public NavigationItem(List<MuseologicalObject> objects) {
-        for (MuseologicalObject object : objects) {
-            if (image == null) {
-                if (object instanceof Text) {
-                    if (text == null) {
-                        text = (Text) object;
-                    } else {
-                        text.setText(new StringBuilder()
-                                .append(text.getText())
-                                .append("\n")
-                                .append(((Text) object).getText())
-                                .substring(0));
-                    }
-                } else if (object instanceof Image) {
-                    image = (Image) object;
-                } else {
-                    throw new ClassCastException("Object object[id=" + object.getId() + "] need to be a Image or a Text");
-                }
-            } else {
-                if (object instanceof Text) {
-                    if (toKnowMore == null) {
-                        toKnowMore = (Text) object;
-                    } else {
-                        toKnowMore.setText(new StringBuilder()
-                                .append(toKnowMore.getText())
-                                .append("\n")
-                                .append(((Text) object).getText())
-                                .substring(0));
-                    }
-                } else {
-                    throw new ClassCastException("Object object need to be a Text");
-                }
-            }
-        }
-    }
+	public Text getText() {
+		return text;
+	}
 
-    public Text getText() {
-        return text;
-    }
+	public Image getImage() {
+		return image;
+	}
 
-    public Image getImage() {
-        return image;
-    }
+	public Text getToKnowMore() {
+		return toKnowMore;
+	}
 
-    public Text getToKnowMore() {
-        return toKnowMore;
-    }
+	public boolean belongs(MuseologicalObject candidate) {
+		if (getName().equals(candidate.getName())) {
+			return true;
+		}
 
-    public boolean belongs(MuseologicalObject candidate) {
-        if (getName().equals(candidate.getName())) {
-            return true;
-        }
+		return false;
+	}
 
-        return false;
-    }
+	public boolean set(MuseologicalObject candidate) {
+		if (belongs(candidate)) {
+			if (candidate instanceof Image) {
+				image = (Image) candidate;
 
-    public boolean set(MuseologicalObject candidate) {
-        if (belongs(candidate)) {
-            if (candidate instanceof Image) {
-                image = (Image) candidate;
+				return true;
+			} else if (candidate instanceof Text) {
+				if (candidate.getObjectType()) {
+					text = (Text) candidate;
+				} else {
+					toKnowMore = (Text) candidate;
+				}
 
-                return true;
-            } else if (candidate instanceof Text) {
-                if (candidate.getObjectType()) {
-                    text = (Text) candidate;
-                } else {
-                    toKnowMore = (Text) candidate;
-                }
+				return true;
+			}
+		}
 
-                return true;
-            }
-        }
+		return false;
+	}
 
-        return false;
-    }
+	public String getName() {
+		if (text != null) {
+			return text.getName();
+		} else if (image != null) {
+			return image.getName();
+		} else if (toKnowMore != null) {
+			return toKnowMore.getName();
+		}
+		return null;
+	}
 
-    public String getName() {
-        if (text != null) {
-            return text.getName();
-        } else if (image != null) {
-            return image.getName();
-        } else if (toKnowMore != null) {
-            return toKnowMore.getName();
-        }
-        return null;
-    }
+	public void print() {
+		if (text != null) {
+			System.out.println(text.getName());
+		} else if (image != null) {
+			System.out.println(image.getName());
+		} else {
+			System.out.println(toKnowMore.getName());
+		}
 
-    public void print() {
-        if (text != null) {
-            System.out.println(text.getName());
-        } else if (image != null) {
-            System.out.println(image.getName());
-        } else {
-            System.out.println(toKnowMore.getName());
-        }
-
-        if (text != null) {
-            System.out.println(text.getText());
-        }
-        if (image != null) {
-            System.out.println(image.getUrlAddress());
-        }
-        if (toKnowMore != null) {
-            System.out.println(toKnowMore.getText());
-        }
-    }
+		if (text != null) {
+			System.out.println(text.getText());
+		}
+		if (image != null) {
+			System.out.println(image.getUrlAddress());
+		}
+		if (toKnowMore != null) {
+			System.out.println(toKnowMore.getText());
+		}
+	}
 
 }

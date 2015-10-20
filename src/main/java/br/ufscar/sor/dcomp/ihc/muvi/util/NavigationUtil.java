@@ -5,7 +5,9 @@ import com.lpsmuseum.dto.MuseologicalObject;
 import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.dto.object.Image;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -18,8 +20,12 @@ public class NavigationUtil {
 
         navigationItems = new ArrayList<NavigationItem>();
 
-        for (Scenario scenario : scenarios) {
-            navigationItems.add(new NavigationItem(scenario.getObjects()));
+		long l = 0;
+		for (Scenario scenario : scenarios) {
+			if (l != scenario.getId()) {
+				navigationItems.add(new NavigationItem(scenario.getObjects()));
+				l = scenario.getId();
+			}
         }
 
         return navigationItems;
