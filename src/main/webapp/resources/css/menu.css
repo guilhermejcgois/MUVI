@@ -45,6 +45,7 @@ section#menu-section li li li {
     width: 230px;
     margin-top: 5px;
 }
+/*
 section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n+1) {
     background-image: url(../img/glyphicons-602-chevron-down.png);
     background-position: right;
@@ -58,6 +59,7 @@ section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n+1):hover {
 section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n+1).opened {
     background-image: url(../img/glyphicons-601-chevron-up.png);
 }
+*/
 section#menu-section nav>ul>li:not(:first-child)>ul>li:nth-child(2n) {
     display: none;
 }
@@ -80,8 +82,9 @@ div#openclose-div input {
     font-size: 30px;
     text-align: right;
     margin-top: 1px;
+	margin-left: 1px;
     background-image: url(../img/glyphicons-517-menu-hamburger.png);
-    background-position: left;
+    background-position: 5px 11px;
     background-repeat: no-repeat;
 }
 div#openclose-div input.opened {

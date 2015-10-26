@@ -6,9 +6,10 @@ html, body {
 	width: 100%;
 	overflow: hidden;
 	overflow: hidden;
-	background-image: url(../img/Monumento_ao_Tropeiro_Lapa_PR.JPG);
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	//background-image: url(../img/Monumento_ao_Tropeiro_Lapa_PR.JPG);
+	//background-repeat: no-repeat;
+	//background-size: 100% 100%;
+	background-color: #987654;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -24,4 +25,21 @@ body > section {
 }
 ul {
 	list-style: none;
+}
+/*
+ *	Button
+ */
+.button {
+	border-radius: 0px;
+	border-width: 1px;
+	color: #fff;
+	background-color: #456789;
+	text-decoration: none;
+	text-align: center;
+}
+.button:hover {
+	background-color: #56789a;
+}
+.button:active {
+	background-color: #234567;
 }

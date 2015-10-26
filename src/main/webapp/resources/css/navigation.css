@@ -27,10 +27,6 @@
 a.nav-sce-btn {
 	visibility: hidden;
 }
-#backto.first {
-	background-color: rgba(0, 0, 0, 0);
-	cursor: default;
-}
 #backto {
 	background-image: url(../img/glyphicons-171-step-backward.png);
 	background-repeat: no-repeat;
@@ -51,7 +47,7 @@ a.nav-sce-btn {
 	width: 80%;
 	margin-top: -3%;
 	margin-left: 10%;
-	height: 100%;
+	height: 78%;
 }
 #object-section section {
 	position: relative;
@@ -77,7 +73,7 @@ a.nav-sce-btn {
 	background-color: rgba(127, 127, 127, 0.5);
 	top: 9%;
 	width: 87%;
-	height: 58%;
+	height: 88%;
 }
 #object-text div {
 	overflow-y: scroll;
@@ -88,14 +84,15 @@ a.nav-sce-btn {
 }
 #object-text a {
 	position: absolute;
-	margin-left: 58%;
+	margin-top: 1px;
+	margin-left: 73%;
 	font-size: 14px;
 }
 #object-section footer {
 	position: absolute;
-	margin-top: 50%;
+	top: 70%;
 	width: 87%;
-	height: 17%;
+	height: 27%;
 	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 3px;
 }
@@ -117,10 +114,9 @@ a.nav-sce-btn {
 	border-width: 0;
 	color: #eee;
 }
-.hide-li div:not(.nav-sce-location):hover {
-	background-color: #eee;
-	cursor: default;
-}
 div.nav-sce-location {
 	cursor: default;
+}
+nav li:not(:first-child):not(:last-child) div {
+	background-color: #456789;
 }

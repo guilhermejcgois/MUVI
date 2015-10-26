@@ -23,8 +23,8 @@
             <article>
                 <h1>${museum.name}</h1>
                 <div>
-                    <a class="btn" href="#"><p>Aleatória</p></a><!--
-                    --><a class="btn" href="/muvi/visita-guiada"><p>Guiada</p></a>
+                    <a class="button button-home" href="#"><p>Aleatória</p></a><!--
+                    --><a class="button button-home" href="/muvi/visita-guiada"><p>Guiada</p></a>
                 </div>
             </article>
         </section>

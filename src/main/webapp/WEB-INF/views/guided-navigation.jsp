@@ -19,7 +19,7 @@
         <c:url value="/resources/js/menu.js" var="menujs" />
         <c:url value="/resources/js/MUVI.js" var="muvijs" />
         <c:url value="/resources/js/navigation.js" var="navigationjs" />
-        
+
         <link href="${maincss}" rel="stylesheet">
         <link href="${menucss}" rel="stylesheet">
         <link href="${navigationcss}" rel="stylesheet">
@@ -31,9 +31,9 @@
         <section id="object-section">
             <nav>
                 <ul>
-                    <li><div id="backto" class="first"><a id="abackto" href="/muvi/visita-guiada/anterior" class="nav-sce-btn">#</a></div></li>
+                    <li><div id="backto" class="button"><a id="abackto" href="/muvi/visita-guiada/anterior" class="nav-sce-btn">#</a></div></li>
                     <li><div id="state" class="nav-sce-location">${atual} de ${numItems}</div></li>
-                    <li><div id="goto"><a id="agoto" href="/muvi/visita-guiada/proximo" class="nav-sce-btn">#</a></div></li>
+                    <li><div id="goto" class=" button"><a id="agoto" href="/muvi/visita-guiada/proximo" class="nav-sce-btn">#</a></div></li>
                 </ul>
             </nav>
             <article>
@@ -43,27 +43,29 @@
                     </header>
                     <article id="object-text">
                         <div>${items.text.text}</div>
-                        <a id="amore" href="#">Para saber mais...</a>
+						<a id="amore" href="#">Para saber mais...</a>
                     </article>
-                    <footer class="hide">
+					<footer class="hide">
                         <div id="divmore">${items.toKnowMore.text}</div>
                     </footer>
                 </section>
                 <img id="image" src="${items.image.urlAddress}"></img>
             </article>
         </section>
-        
+
         <script src="${domutilsjs}" type="text/javascript"></script>
         <script src="${muvijs}" type="text/javascript"></script>
 		<script src="${menujs}" type="text/javascript"></script>
         <script src="${navigationjs}" type="text/javascript"></script>
         <script>
-            var numItems = ${numItems};
-			if (${atual} == 1)
+			var numItems = ${numItems};
+			if (${atual} == 1) {
 				DOMUtils.addClass(document.getElementById('backto'), 'hide');
-			else if (${atual} == numItems)
+				console.log('hide back');
+			} else if (${atual} == numItems) {
 				DOMUtils.addClass(document.getElementById('goto'), 'hide');
-			console.log(${items.image.urlAddress});
+				console.log('hide go');
+			}
         </script>
     </body>
 </html>

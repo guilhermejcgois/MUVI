@@ -2,6 +2,7 @@
 <section id="menu">
     <section id="menu-section">
         <header>
+			<a href="/muvi/"></a>
         </header>
         <article>
             <nav>
@@ -9,15 +10,15 @@
                     <li>Cenários</li>
                     <li>
                         <ul>
-							<c:forEach items="${museum.scenarios}" var="scenario">
-								<li id="menu-li" class="clickable">${scenario.name}</li>
-								<li id="menu-lili">
+							<c:forEach items="${museum.scenarios}" var="scenario" step="2">
+								<li id="menu-li" <!--class="clickable"-->${scenario.name}</li>
+								<!--<li id="menu-lili">
 									<ul>
 										<c:forEach items="${scenario.objects}" var="object">
 											<li>${object.name}</li>
 											</c:forEach>
 									</ul>
-								</li>
+								</li>-->
 							</c:forEach>
                         </ul>
                     </li>
@@ -38,7 +39,7 @@
         </footer>
     </section>
     <div id="openclose-div">
-        <input id="menu-btn" type="button" value="MENU" />
+        <input id="menu-btn" class="button" type="button" value="MENU" />
     </div>
     <div id="modal-div"></div>
 </section>

@@ -17,19 +17,7 @@ div a {
 	display: inline-block;
 	height: 100%;
 }
-.btn {
+.button-home {
 	width: 50%;
-	border-radius: 0px;
-	border-width: 1px;
-	color: #fff;
-	background-color: #9abcde;
-	text-decoration: none;
-	text-align: center;
 	font-size: 24px;
-}
-.btn:hover {
-	background-color: #abcdef;
-}
-.btn:active {
-	background-color: #789abc;
 }
