@@ -1,0 +1,23 @@
+article {
+	background-color: rgba(127, 127, 127, 0.7);
+	margin-top: 15%;
+	margin-left: 35%;
+	padding-top: 1%; 
+	width: 30%;
+	height: 40%;
+}
+h1 {
+	font-size: 50px;
+	text-align: center;
+}
+div {
+	height: 30%;
+}
+div a {
+	display: inline-block;
+	height: 100%;
+}
+.button-home {
+	width: 50%;
+	font-size: 24px;
+}
