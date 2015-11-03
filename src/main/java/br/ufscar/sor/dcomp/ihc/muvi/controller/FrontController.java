@@ -50,7 +50,7 @@ public class FrontController {
 		System.out.println("Iniciando navegaçao guiada...");
 
 		navigationItems = NavigationUtil.arrangeData(museum.getScenarios());
-		navigationIndex = -1;   
+		navigationIndex = -1;
 
 		System.out.println(navigationItems.size());
 
@@ -61,6 +61,13 @@ public class FrontController {
 		modelAndView.addObject("atual", navigationIndex + 1);
 		modelAndView.addObject("scenarioId", scenarioAtual = 0);
 		modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
+
+		boolean hasChallenge = (museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
+		modelAndView.addObject("hasChallenge", hasChallenge);
+		if (hasChallenge) {
+			ScenarioChallenge scenarioChallenge = (ScenarioChallenge) (museum.getScenarios().get(scenarioAtual));
+			modelAndView.addObject("challenges", scenarioChallenge.getChallenges());
+		}
 
 		return modelAndView;
 	}

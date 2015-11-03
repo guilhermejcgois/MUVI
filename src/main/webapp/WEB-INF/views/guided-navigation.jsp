@@ -50,6 +50,9 @@
                     </footer>
                 </section>
                 <img id="image" src="${items.image.urlAddress}"></img>
+				<section>
+					<%@include file="../jspf/challenge-list.jspf" %>
+				</section>
             </article>
         </section>
 
