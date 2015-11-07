@@ -1,30 +1,29 @@
 package br.ufscar.sor.dcomp.ihc.muvi.controller;
 
+import br.ufscar.sor.dcomp.ihc.muvi.model.MuviMuseum;
 import br.ufscar.sor.dcomp.ihc.muvi.model.NavigationItem;
-import br.ufscar.sor.dcomp.ihc.muvi.util.NavigationUtil;
-import com.lpsmuseum.dto.Museum;
-import com.lpsmuseum.dto.scenario.ScenarioChallenge;
+import com.lpsmuseum.behaviour.museum.navigation.AleatoryNavigation;
+import com.lpsmuseum.behaviour.museum.navigation.GuidedNavigation;
+import com.lpsmuseum.behaviour.museum.navigation.Node;
+import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.service.MuseumService;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
- * @author Guilherme JC Gois
+ * @author Guilhimport org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+erme JC Gois
  */
 @Controller
 public class FrontController {
 
-	private ModelAndView modelAndView;
-	private static Museum museum;
+	private MuviMuseum museum;
 	private final MuseumService museumService;
-	private List<NavigationItem> navigationItems;
-	private int navigationIndex;
-	private int scenarioAtual;
+	private int numItems;
 
 	public FrontController() {
 		museumService = new MuseumService();
@@ -32,96 +31,102 @@ public class FrontController {
 
 	@RequestMapping("/")
 	public ModelAndView home() throws Exception {
-		modelAndView = new ModelAndView("home");
+		ModelAndView modelAndView = new ModelAndView("home");
 
 		System.out.println("Inicializando museu...");
-
-		museum = museumService.findById(1L);
+		
+		/*
+		Achamos que a interface de Museum para uso poderia ser um pouco melhor, 
+		tais possíveis melhorias foram feitas na especialização em MuviMuseum, 
+		fizemos issso para não mexer diretamente na linha.
+		FIX Gambiarra.
+		*/
+		museum = new MuviMuseum(museumService.findById(1L));
 		modelAndView.addObject("museum", museum);
-		//modelAndView.addObject("museum", new Museum("Museu", new ArrayList<Scenario>()));
+		
+		numItems = museum.getScenarios().size();
 
 		return modelAndView;
 	}
 
-	@RequestMapping("visita-guiada")
-	public ModelAndView navegacaoGuiada() {
-		modelAndView = new ModelAndView("guided-navigation");
+	@RequestMapping("navegar")
+	public ModelAndView navegacaoGuiada(HttpServletRequest request, String mode) {
 
-		System.out.println("Iniciando navegaçao guiada...");
+		ModelAndView modelAndView = null;
 
-		navigationItems = NavigationUtil.arrangeData(museum.getScenarios());
-		navigationIndex = -1;
-
-		System.out.println(navigationItems.size());
-
-		modelAndView.addObject("numItems", navigationItems.size());
-		modelAndView.addObject("museum", museum);
-		modelAndView.addObject("items", navigationItems.get(++navigationIndex));
-		//System.out.println(navigationItems.get(navigationIndex).getImage().getUrlAddress());
-		modelAndView.addObject("atual", navigationIndex + 1);
-		modelAndView.addObject("scenarioId", scenarioAtual = 0);
-		modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
-
-		boolean hasChallenge = (museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
-		modelAndView.addObject("hasChallenge", hasChallenge);
-		if (hasChallenge) {
-			ScenarioChallenge scenarioChallenge = (ScenarioChallenge) (museum.getScenarios().get(scenarioAtual));
-			modelAndView.addObject("challenges", scenarioChallenge.getChallenges());
+		System.out.println("Iniciando navegação em modo '"+ mode + "'...");
+		
+		Node navigationNode = null;
+		if (mode.equals("aleatory")) {
+			museum.setNavigation(new AleatoryNavigation());
+			modelAndView = new ModelAndView("aleatory-navigation");
+		} else if (mode.equals("guided")) {
+			museum.setNavigation(new GuidedNavigation());
+			modelAndView = new ModelAndView("guided-navigation");
+		} else {
+			throw new IllegalArgumentException("Sorry, but the mode '" + mode 
+					+ "' is not allowed to navigation. Do you choose the "
+					+ "navigation's mode in our home page?");
 		}
+		navigationNode = museum.navigate();
+		
+		request.getSession(true).setAttribute("navigationNode", navigationNode);
+		modelAndView.addObject("navigationNode", navigationNode);
+		modelAndView.addObject("items", new NavigationItem(navigationNode.getScenario()));
+		modelAndView.addObject("hasNext", true);
+		modelAndView.addObject("hasPrevious", false);
+		modelAndView.addObject("atual", getCurrentIndex(navigationNode));
+		modelAndView.addObject("numItems", numItems);
 
 		return modelAndView;
 	}
 
-	@RequestMapping("visita-guiada/proximo")
-	/*@ResponseBody
-	 public NavigationItem next() {
-	 return navigationItems.get(++navigationIndex);
-	 }*/
-	public ModelAndView next() {
-		modelAndView = new ModelAndView("guided-navigation");
+	@RequestMapping("navegar/proximo")
+	public ModelAndView next(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("guided-navigation");
 
-		System.out.println("Indo para os próximos objetos...");
-
-		if ((navigationIndex + 1) < navigationItems.size()) {
-			System.out.println("Indo para os próximos objetos...");
-			modelAndView.addObject("numItems", navigationItems.size());
-			modelAndView.addObject("museum", museum);
-			modelAndView.addObject("items", navigationItems.get(++navigationIndex));
-			modelAndView.addObject("atual", navigationIndex + 1);
-			modelAndView.addObject("scenarioId", scenarioAtual);
-			modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
-		}
+		System.out.println("Indo para o próximo cenário...");
+		
+		Node navigationNode = (Node) request.getSession().getAttribute("navigationNode");
+		navigationNode = navigationNode.getNeighbor();
+		request.getSession().setAttribute("navigationNode", navigationNode);
+		
+		modelAndView.addObject("navigationNode", navigationNode);
+		modelAndView.addObject("items", new NavigationItem(navigationNode.getScenario()));
+		modelAndView.addObject("hasNext", navigationNode.getNeighbor().getScenario() != null);
+		modelAndView.addObject("hasPrevious", true);
+		modelAndView.addObject("atual", getCurrentIndex(navigationNode));
+		modelAndView.addObject("numItems", numItems);
 
 		return modelAndView;
 	}
 
-	@RequestMapping("visita-guiada/anterior")
-	/*@ResponseBody
-	 public NavigationItem back() {
-	 return navigationItems.get(--navigationIndex);
-	 }*/
-	public ModelAndView back() {
-		modelAndView = new ModelAndView("guided-navigation");
+	@RequestMapping("navegar/anterior")
+	public ModelAndView back(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("guided-navigation");
 
 		System.out.println("Indo para os objetos anteriores...");
 
-		if (navigationIndex > 0) {
-			modelAndView.addObject("numItems", navigationItems.size());
-			modelAndView.addObject("museum", museum);
-			modelAndView.addObject("items", navigationItems.get(--navigationIndex));
-			modelAndView.addObject("atual", navigationIndex + 1);
-			modelAndView.addObject("scenarioId", scenarioAtual);
-			modelAndView.addObject("hasChallenge", museum.getScenarios().get(scenarioAtual) instanceof ScenarioChallenge);
-		}
-
+		
+		Node navigationNode = (Node) request.getSession().getAttribute("navigationNode");
+		navigationNode = navigationNode.doBacktrack();
+		request.getSession().setAttribute("navigationNode", navigationNode);
+		
+		modelAndView.addObject("navigationNode", navigationNode);
+		modelAndView.addObject("items", new NavigationItem(navigationNode.getScenario()));
+		modelAndView.addObject("hasNext", true);
+		modelAndView.addObject("hasPrevious", navigationNode.doBacktrack() != null);
+		modelAndView.addObject("atual", getCurrentIndex(navigationNode));
+		modelAndView.addObject("numItems", numItems);
+ //
 		return modelAndView;
 	}
 
-	@RequestMapping("visita-guiada/fazer-desafio")
+	/*@RequestMapping("visita-guiada/fazer-desafio")
 	public ModelAndView cenarioComDesafioFinalizado() {
-		modelAndView = new ModelAndView("notice");
+		ModelAndView modelAndView = new ModelAndView("notice");
 
-		System.out.println("O cenario acabou...");
+		//System.out.println("O cenario acabou...");
 
 		modelAndView.addObject("title", "Vamos testar seus conhecimentos?");
 		modelAndView.addObject("text", "Você concluiu a navegação pelo cená"
@@ -138,9 +143,9 @@ public class FrontController {
 
 	@RequestMapping("visita-guiada/cenario-terminado")
 	public ModelAndView cenarioSemDesafioFinalizado() {
-		modelAndView = new ModelAndView("notice");
+		ModelAndView modelAndView = new ModelAndView("notice");
 
-		System.out.println("O cenario acabou...");
+		//System.out.println("O cenario acabou...");
 
 		modelAndView.addObject("title", "Sua visita por aqui acabou!");
 		modelAndView.addObject("text", "Você completou com êxito sua última vi"
@@ -150,6 +155,20 @@ public class FrontController {
 		modelAndView.addObject("actions", actions);
 
 		return modelAndView;
+	}*/
+	
+	@SuppressWarnings("empty-statement")
+	public int getCurrentIndex(Node node) {
+		int i = 0;
+		
+		//while (i < museum.getScenarios().size() && museum.getScenarios().get(i++).getId() != node.getScenario().getId()) ;
+		for (Scenario scenario : museum.getScenarios()) {
+			if (scenario.getId() == node.getScenario().getId())
+				break;
+			i++;
+		}
+		
+		return museum.getScenarios().indexOf(node.getScenario());
 	}
 
 }

@@ -1,6 +1,7 @@
 package br.ufscar.sor.dcomp.ihc.muvi.model;
 
 import com.lpsmuseum.dto.MuseologicalObject;
+import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.dto.object.Image;
 import com.lpsmuseum.dto.object.Text;
 import java.util.List;
@@ -24,8 +25,8 @@ public class NavigationItem {
 	 toKnowMore = (Text) museologicalObject;
 	 }
 	 }*/
-	public NavigationItem(List<MuseologicalObject> objects) {
-		for (MuseologicalObject object : objects) {
+	public NavigationItem(Scenario scenario) {
+		for (MuseologicalObject object : scenario.getObjects()) {
 			System.out.println(object.getId());
 			if (image == null) {
 				if (object instanceof Text) {
@@ -43,7 +44,7 @@ public class NavigationItem {
 					System.out.println("Url:" + ((Image) object).getUrlAddress());
 					image = (Image) object;
 				} else {
-					throw new ClassCastException("Object object[id=" + object.getId() + "] need to be a Image or a Text");
+					throw new ClassCastException("Object " + object + "[id=" + object.getId() + "] need to be a Image or a Text");
 				}
 			} else {
 				if (object instanceof Text) {

@@ -23,7 +23,7 @@ public class NavigationUtil {
 		long l = 0;
 		for (Scenario scenario : scenarios) {
 			if (l != scenario.getId()) {
-				navigationItems.add(new NavigationItem(scenario.getObjects()));
+				navigationItems.add(new NavigationItem(scenario));
 				l = scenario.getId();
 			}
         }

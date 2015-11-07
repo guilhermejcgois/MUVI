@@ -60,6 +60,11 @@ a.nav-sce-btn {
 	background-color: rgba(127, 127, 127, 0.3);
 	border-radius: 10px;
 }
+
+
+
+
+
 #object-section header {
 	height: 10%;
 	width: 90%;
@@ -71,9 +76,9 @@ a.nav-sce-btn {
 #object-section #object-text {
 	position: absolute;
 	background-color: rgba(127, 127, 127, 0.5);
-	top: 9%;
+	top: 48px;
 	width: 87%;
-	height: 88%;
+	height: calc(88% - 24px);
 }
 #object-text div {
 	overflow-y: scroll;
@@ -85,12 +90,15 @@ a.nav-sce-btn {
 #object-text a {
 	position: absolute;
 	margin-top: 1px;
-	margin-left: 73%;
+	margin-left: 53%;
 	font-size: 14px;
+	width: 100px;
+	text-align: right;
+	
 }
 #object-section footer {
 	position: absolute;
-	top: 70%;
+	bottom: 7%;
 	width: 87%;
 	height: 27%;
 	background-color: rgba(0, 0, 0, 0.3);

@@ -3,6 +3,8 @@
     Created on : 08/10/2015, 13:21:57
     Author     : Guilherme JC Gois
 --%>
+<%@page import="br.ufscar.sor.dcomp.ihc.muvi.model.NavigationItem"%>
+<%@page import="br.ufscar.sor.dcomp.ihc.muvi.model.MuviMuseum"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -31,28 +33,28 @@
         <section id="object-section">
             <nav>
                 <ul>
-                    <li><div id="backto" class="button"><a id="abackto" href="/muvi/visita-guiada/anterior" class="nav-sce-btn">#</a></div></li>
+                    <li><div id="backto" class="button <c:if test="${!hasPrevious}">hide</c:if>"><a id="abackto" href="/muvi/navegar/anterior" class="nav-sce-btn">#</a></div></li>
                     <li><div id="state" class="nav-sce-location">${atual} de ${numItems}</div></li>
-                    <li><div id="goto" class=" button"><a id="agoto" href="/muvi/visita-guiada/proximo" class="nav-sce-btn">#</a></div></li>
-                </ul>
-            </nav>
-            <article>
-                <section>
-                    <header>
-                        <h1 id="title">${items.text.name}</h1>
+                    <li><div id="goto" class=" button <c:if test="${!hasNext}">hide</c:if>"><a id="agoto" href="/muvi/navegar/proximo" class="nav-sce-btn">#</a></div></li>
+					</ul>
+				</nav>
+				<article>
+					<section>
+						<header>
+							<h1 id="title">${items.text.name}</h1>
                     </header>
                     <article id="object-text">
                         <div>${items.text.text}</div>
-						<a id="amore" href="#">Para saber mais...</a>
+						<a id="amore" href="#">Saiba mais...</a>
                     </article>
 					<footer class="hide">
                         <div id="divmore">${items.toKnowMore.text}</div>
                     </footer>
                 </section>
                 <img id="image" src="${items.image.urlAddress}"></img>
-				<section>
-					<%@include file="../jspf/challenge-list.jspf" %>
-				</section>
+				<!--<section>
+				<%@include file="../jspf/challenge-list.jspf" %>
+			</section>-->
             </article>
         </section>
 
@@ -60,15 +62,5 @@
         <script src="${muvijs}" type="text/javascript"></script>
 		<script src="${menujs}" type="text/javascript"></script>
         <script src="${navigationjs}" type="text/javascript"></script>
-        <script>
-			var numItems = ${numItems};
-			if (${atual} == 1) {
-				DOMUtils.addClass(document.getElementById('backto'), 'hide');
-				console.log('hide back');
-			} else if (${atual} == numItems) {
-				DOMUtils.addClass(document.getElementById('goto'), 'hide');
-				console.log('hide go');
-			}
-        </script>
     </body>
 </html>

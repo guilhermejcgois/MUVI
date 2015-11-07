@@ -109,6 +109,7 @@ section#menu-section header img {
 section#menu-section article {
     z-index: 99;
     height: calc(100% - 150px - 170px);
+	overflow-y: auto;
 }
 section#menu-section footer {
     background-color: #777;

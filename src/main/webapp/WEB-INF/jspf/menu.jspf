@@ -14,11 +14,11 @@
 								<li id="menu-li" <!--class="clickable"-->${scenario.name}</li>
 								<!--<li id="menu-lili">
 									<ul>
-										<c:forEach items="${scenario.objects}" var="object">
-											<li>${object.name}</li>
-											</c:forEach>
-									</ul>
-								</li>-->
+								<c:forEach items="${scenario.objects}" var="object">
+									<li>${object.name}</li>
+								</c:forEach>
+						</ul>
+					</li>-->
 							</c:forEach>
                         </ul>
                     </li>
