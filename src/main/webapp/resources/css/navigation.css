@@ -17,11 +17,11 @@
 	height: 30px;
 	padding-top: 10px;
 }
-#object-section div:not(.nav-sce-location):hover {
+#object-section nav div:not(.nav-sce-location):hover {
 	background-color: #ddd;
 	cursor: pointer;
 }
-#object-section div.nav-sce-location {
+#object-section nav div.nav-sce-location {
 	width: 100px;
 }
 a.nav-sce-btn {
@@ -36,6 +36,9 @@ a.nav-sce-btn {
 	background-image: url(../img/glyphicons-179-step-forward.png);
 	background-repeat: no-repeat;
 	background-position: center;
+}
+#goto a {
+	display: inline-block;
 }
 #goto.last {
 	background-image: url(../img/glyphicons-178-fast-forward.png);
@@ -114,6 +117,11 @@ a.nav-sce-btn {
 	position: absolute;
 	top: -20px;
 	left: 49%;
+}
+div.challenge {
+	position: absolute;
+	left: 49%;
+	bottom: 10%;
 }
 .hide {
 	display: none;

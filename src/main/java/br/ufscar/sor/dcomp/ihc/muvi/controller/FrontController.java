@@ -7,6 +7,7 @@ import com.lpsmuseum.behaviour.museum.navigation.GuidedNavigation;
 import com.lpsmuseum.behaviour.museum.navigation.Node;
 import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.service.MuseumService;
+import com.lpsmuseum.service.ScenarioService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,7 @@ public class FrontController {
 		fizemos issso para não mexer diretamente na linha.
 		FIX Gambiarra.
 		*/
+		Scenario s = new ScenarioService().findById(1L);
 		museum = new MuviMuseum(museumService.findById(1L));
 		modelAndView.addObject("museum", museum);
 		
