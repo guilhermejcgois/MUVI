@@ -54,7 +54,7 @@ public class MuviMuseum extends Museum {
 		} else {
 			node = null;
 		}
-		this.scenarios = temp;
+		setScenarios(museum.getScenarios());
 		return node;
 	}
 	

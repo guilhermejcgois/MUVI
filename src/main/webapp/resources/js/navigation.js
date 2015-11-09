@@ -87,6 +87,12 @@
 		else
 			DOMUtils.addClass(footer, "hide");
 	});
+	
+	document.getElementById('challenge').addEventListener("click", function (event) {
+		console.log('challenge click');
+		
+		DOMUtils.removeClass(document.getElementById('challenge-section'), "hide");
+	});
 
 	//load(true);
 

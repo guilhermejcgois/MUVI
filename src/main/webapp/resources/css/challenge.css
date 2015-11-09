@@ -1,16 +1,30 @@
-body > section {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+#challenge-section {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	z-index: 99;
 }
-ul {
-    list-style: none;
+#challenge-section > section {
+	position: absolute;
+	background-color: rgba(255, 255, 255, 0.9);
+	top: 10%;
+	width: 80%;
+	height: 80%;
+	margin: 0 10%;
+	border-radius: 10px;
+}
+#challenge-section header {
+    position: relative;
+}
+#challenge-section h2 {
+    font-size: 48px;
+    text-align: center;
+	margin: 1% 0;
 }
 #challenge-section > article {
     position: relative;
     height: 100%;
 }
-article section {
+#challenge-section article section {
     position: absolute;
     top: 13%;
     height: 79%;
@@ -19,72 +33,72 @@ article section {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
-header {
-    position: relative;
-}
-h1 {
-    font-size: 20px;
-    text-align: center;
-}
-#challenge-alternatives {
+#challenge-section #challenge-alternatives {
     position: relative;
     height: 60%;
     width: 100%;
 }
-#challenge-alternatives span {
+#challenge-section #challenge-alternatives span {
     position: absolute;
     top: 0;
     left: 0;
     padding: 25%;
 }
-div {
+#challenge-section div {
     cursor: pointer;
 }
-#alternative1 {
-    position: absolute;
-    top: 0;
+#challenge-section article > .alternative {
+	position: absolute;
+    width: 25%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    background-size: 100%;
+}
+#challenge-section article > .alternative:first-child {
+    top: 23%;
     left: 15%;
-    width: 25%;
-    height: 40%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    background-size: 100%;
 }
-#alternative2 {
-    position: absolute;
-    bottom: 0;
+#challenge-section article > .alternative:nth-child(2) {
+    top: 53%;
     margin: 0 37%;
-    width: 25%;
-    height: 40%;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    background-size: 100%;
 }
-#alternative3 {
-    position: absolute;
-    top: 0;
+#challenge-section article > .alternative:last-child {
+    top: 23%;
     right: 15%;
-    width: 25%;
-    height: 40%;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    background-size: 100%;
 }
-.selected {
+#challenge-section .selected {
     border: 1px solid yellow;
 }
-footer {
-    position: relative;
-    height: 18.5%;
-    padding-top: 10px;
+#challenge-section .correct {
+    border: 1px solid green;
 }
-nav {
+#challenge-section .wrong {
+    border: 1px solid red;
+}
+#challenge-section footer {
+    position: absolute;
+    height: 15%;
+	width: 100%;
+	bottom: 0;
+}
+#challenge-section footer a {
+	position: absolute;
+	height: 90%;
+	width: 40%;
+	font-size: 48px;
+}
+#challenge-section footer a:first-child {
+	left: 5%;
+}
+#challenge-section footer a:last-child {
+	right: 5%;
+}
+#challenge-section nav {
     position: relative;
     height: 100%;
 }
-#finish {
+#challenge-section #finish {
     position: absolute;
     top: 0;
     left: 46%;
@@ -98,12 +112,12 @@ nav {
     font-size: 8px;
     text-align: center;
 }
-#finish span {
+#challenge-section #finish span {
     position: absolute;
     bottom: 5px;
     left: 6px;
 }
-#cancel {
+#challenge-section #cancel {
     position: absolute;
     top: 77px;
     left: 46%;
@@ -117,12 +131,12 @@ nav {
     font-size: 8px;
     text-align: center;
 }
-#cancel span {
+#challenge-section #cancel span {
     position: absolute;
     top: 5px;
     left: 6px;
 }
-#back {
+#challenge-section #back {
     position: absolute;
     top: 26px;
     left: 38.5%;
@@ -134,17 +148,17 @@ nav {
     height: 50px;
     width: 50px;
 }
-#back span {
+#challenge-section #back span {
     position: absolute;
     background-image: url(glyphicons-171-step-backward.png);
     background-repeat: no-repeat;
     margin: 14px 23px;
     color: rgba(0, 0, 0, 0);
 }
-#back span:hover {
+#challenge-section #back span:hover {
     cursor: default;
 }
-#next {
+#challenge-section #next {
     position: absolute;
     top: 26px;
     left: 53.5%;
@@ -156,17 +170,17 @@ nav {
     height: 50px;
     width: 50px;
 }
-#next span {
+#challenge-section #next span {
     position: absolute;
     background-image: url(glyphicons-179-step-forward.png);
     background-repeat: no-repeat;
     margin: 14px 16px;
     color: rgba(0, 0, 0, 0);
 }
-#next span:hover {
+#challenge-section #next span:hover {
     cursor: default;
 }
-#state {
+#challenge-section #state {
     position: absolute;
     top: 26px;
     left: 46%;
@@ -184,21 +198,21 @@ nav {
     -ms-user-select: none;
     user-select: none;
 }
-#state span {
+#challenge-section #state span {
     position: absolute;
     top: 0;
     left: 0;
     padding-top: 18px;
     padding-left: 5px;
 }
-.hide {
+#challenge-section .hide {
     display: none;
 }
-.hide-li div {
+#challenge-section .hide-li div {
     border-width: 0;
     color: #eee;
 }
-.hide-li div:not(.nav-sce-location):hover {
+#challenge-section .hide-li div:not(.nav-sce-location):hover {
     background-color: #eee;
     cursor: default;
 }

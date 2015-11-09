@@ -117,6 +117,8 @@ a.nav-sce-btn {
 	position: absolute;
 	top: -20px;
 	left: 49%;
+	max-height: 75%;
+	max-width: 50%;
 }
 div.challenge {
 	position: absolute;

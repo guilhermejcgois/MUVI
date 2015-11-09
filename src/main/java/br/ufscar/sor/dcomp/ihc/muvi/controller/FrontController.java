@@ -8,6 +8,7 @@ import com.lpsmuseum.behaviour.museum.navigation.Node;
 import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.service.MuseumService;
 import com.lpsmuseum.service.ScenarioService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
- * @author Guilhimport org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-erme JC Gois
+ * @author Guilherme JC Gois
  */
 @Controller
 public class FrontController {
@@ -42,7 +41,6 @@ public class FrontController {
 		fizemos issso para não mexer diretamente na linha.
 		FIX Gambiarra.
 		*/
-		Scenario s = new ScenarioService().findById(1L);
 		museum = new MuviMuseum(museumService.findById(1L));
 		modelAndView.addObject("museum", museum);
 		
@@ -52,7 +50,7 @@ public class FrontController {
 	}
 
 	@RequestMapping("navegar")
-	public ModelAndView navegacaoGuiada(HttpServletRequest request, String mode) {
+	public ModelAndView navegar(HttpServletRequest request, String mode) {
 
 		ModelAndView modelAndView = null;
 
@@ -120,7 +118,7 @@ public class FrontController {
 		modelAndView.addObject("hasPrevious", navigationNode.doBacktrack() != null);
 		modelAndView.addObject("atual", getCurrentIndex(navigationNode));
 		modelAndView.addObject("numItems", numItems);
- //
+
 		return modelAndView;
 	}
 
@@ -163,14 +161,12 @@ public class FrontController {
 	public int getCurrentIndex(Node node) {
 		int i = 0;
 		
-		//while (i < museum.getScenarios().size() && museum.getScenarios().get(i++).getId() != node.getScenario().getId()) ;
-		for (Scenario scenario : museum.getScenarios()) {
-			if (scenario.getId() == node.getScenario().getId())
+		for (List<Scenario> scenarios = museum.getScenarios(); i < scenarios.size(); i++) {
+			if (scenarios.get(i).getId() == node.getScenario().getId())
 				break;
-			i++;
 		}
 		
-		return museum.getScenarios().indexOf(node.getScenario());
+		return i;//museum.getScenarios().indexOf(node.getScenario());
 	}
 
 }
