@@ -60,7 +60,7 @@ a.nav-sce-btn {
 	padding-left: 3%;
 	width: 38%;
 	height: 100%;
-	background-color: rgba(127, 127, 127, 0.3);
+	background-color: #678967;
 	border-radius: 10px;
 }
 
@@ -78,15 +78,13 @@ a.nav-sce-btn {
 }
 #object-section #object-text {
 	position: absolute;
-	background-color: rgba(127, 127, 127, 0.5);
+	background-color: #458967;
 	top: 48px;
 	width: 87%;
 	height: calc(88% - 24px);
 }
 #object-text div {
 	overflow-y: scroll;
-	height: 58%;
-	max-height: 58%;
 	padding: 10px;
 	border-radius: 7px;
 }
@@ -104,7 +102,7 @@ a.nav-sce-btn {
 	bottom: 7%;
 	width: 87%;
 	height: 27%;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: #458967;
 	border-radius: 3px;
 }
 #object-section footer div {
@@ -117,7 +115,9 @@ a.nav-sce-btn {
 	position: absolute;
 	top: -20px;
 	left: 49%;
+	height: auto;
 	max-height: 75%;
+	width: 50%;
 	max-width: 50%;
 }
 div.challenge {
@@ -137,6 +137,11 @@ div.nav-sce-location {
 }
 nav li:not(:first-child):not(:last-child) div {
 	background-color: #456789;
+}
+
+.with-more {
+	height: 58%;
+	max-height: 58%;
 }
 .without-more {
 	height: 95%;

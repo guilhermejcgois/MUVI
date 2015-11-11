@@ -41,7 +41,7 @@ public class FrontController {
 		fizemos issso para não mexer diretamente na linha.
 		FIX Gambiarra.
 		*/
-		museum = new MuviMuseum(museumService.findById(1L));
+		museum = new MuviMuseum(museumService.listMuseum().get(0));
 		modelAndView.addObject("museum", museum);
 		
 		numItems = museum.getScenarios().size();

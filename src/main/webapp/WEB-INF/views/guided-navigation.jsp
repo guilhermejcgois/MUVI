@@ -45,18 +45,19 @@
 							<h1 id="title">${items.text.name}</h1>
 					</header>
 					<article id="object-text">
-						<div <c:if test="${items.toKnowMore == null}">class="without-more"</c:if>>${items.text.text}</div>
+						<div class="with-more">${items.text.text}</div>
 						<c:if test="${items.toKnowMore != null}">
 							<a id="amore" href="#">Saiba mais...</a>
 						</c:if>
 					</article>
-					<c:if test="${items.toKnowMore != null}">
+					
 						<footer class="hide">
 							<div id="divmore">${items.toKnowMore.text}</div>
 						</footer>
-					</c:if>
+					
 				</section>
 				<img id="image" src="${items.image.urlAddress}"/>
+				<!--<small>${items.image.name}</small>-->
 				<c:if test="${navigationNode.scenario.class.name == 'com.lpsmuseum.dto.scenario.ScenarioChallenge'}">
 					<div id="challenge"><a class="button">Desafio</a></div>
 				</c:if>
@@ -85,7 +86,13 @@
 				display: inline-block;
 			}
 			.doneAndCorrect {
-				background-color: #45ff89;
+				background-color: #45aa45;
+			}
+			.doneAndCorrect:hover {
+				background-color: #56aa45;
+			}
+			.doneAndCorrect:active {
+				background-color: #23aa45;
 			}
 			.doneAndWrong {
 				background-color: #ab0000;
@@ -151,7 +158,7 @@
 							DOMUtils.addClass(target, "selected");
 					else if (DOMUtils.containClass(alternativesdiv[i], "selected"))
 						DOMUtils.removeClass(alternativesdiv[i], "selected");
-			}
+			}	
 			;
 
 			var alternativesdiv = document.getElementsByClassName('alternative');
@@ -177,12 +184,14 @@
 				var challengebutton = document.getElementById('challenge').children[0];
 				if (DOMUtils.containClass(target, "verified")) {
 					DOMUtils.addClass(document.getElementById('challenge-section'), "hide");
+					
 				} else {
 					for (i = 0; i < alternativesdiv.length; i++) {
 						if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
 							DOMUtils.removeClass(alternativesdiv[i], "wrong");
 						if (DOMUtils.containClass(alternativesdiv[i], "selected")) {
-							if (alternativesdiv[i].children[0].innerHTML === '${challenge.correctAnswer.description}') {
+							
+							if (i == 0/*alternativesdiv[i].children[0].innerHTML === '${challenge.correctAnswer.description}'*/) {
 								if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
 									DOMUtils.removeClass(alternativesdiv[i], "wrong")
 								if (!DOMUtils.containClass(alternativesdiv[i], "correct"))
@@ -194,6 +203,7 @@
 								target.innerHTML = 'Finalizar';
 
 								DOMUtils.addClass(document.getElementById('challenge-cancel'), "disabled");
+								DOMUtils.addClass(target, "verified");
 								document.getElementById('challenge-cancel').removeEventListener(cancelListener);
 								for (var i = 0; i < alternativesdiv.length; i++) {
 									console.log('Adding event listener to alternative ' + i);
@@ -222,5 +232,6 @@
 				}
 			});
 		</script>
+		
 	</body>
 </html>

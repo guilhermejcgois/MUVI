@@ -28,7 +28,8 @@ public class NavigationItem {
 	public NavigationItem(Scenario scenario) {
 		for (MuseologicalObject object : scenario.getObjects()) {
 			System.out.println(object.getId());
-			if (image == null) {
+			boolean b = true;
+			if (image == null/* && b*/) {
 				if (object instanceof Text) {
 					System.out.println("Text:" + ((Text) object).getText());
 					if (text == null) {
@@ -40,6 +41,7 @@ public class NavigationItem {
 								.append(((Text) object).getText())
 								.substring(0));
 					}
+					b = object.getObjectType();
 				} else if (object instanceof Image) {
 					System.out.println("Url:" + ((Image) object).getUrlAddress());
 					image = (Image) object;

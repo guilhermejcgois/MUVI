@@ -54,6 +54,8 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     background-size: 100%;
+	font-size: 32px;
+	text-align: center;
 }
 #challenge-section article > .alternative:first-child {
     top: 23%;

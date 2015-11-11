@@ -1,6 +1,6 @@
 article {
 	position: relative;
-	background-color: rgba(127, 127, 127, 0.7);
+	background-color: #458967;
 	top: 25%;
 	left: 35%;
 	padding-top: 1%; 
@@ -25,5 +25,5 @@ div a {
 }
 .button-home {
 	width: 100%;
-	font-size: 24px;
+	font-size: 28px;
 }
