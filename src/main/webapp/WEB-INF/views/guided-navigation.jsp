@@ -45,12 +45,16 @@
 							<h1 id="title">${items.text.name}</h1>
 					</header>
 					<article id="object-text">
-						<div>${items.text.text}</div>
-						<a id="amore" href="#">Saiba mais...</a>
+						<div <c:if test="${items.toKnowMore == null}">class="without-more"</c:if>>${items.text.text}</div>
+						<c:if test="${items.toKnowMore != null}">
+							<a id="amore" href="#">Saiba mais...</a>
+						</c:if>
 					</article>
-					<footer class="hide">
-						<div id="divmore">${items.toKnowMore.text}</div>
-					</footer>
+					<c:if test="${items.toKnowMore != null}">
+						<footer class="hide">
+							<div id="divmore">${items.toKnowMore.text}</div>
+						</footer>
+					</c:if>
 				</section>
 				<img id="image" src="${items.image.urlAddress}"/>
 				<c:if test="${navigationNode.scenario.class.name == 'com.lpsmuseum.dto.scenario.ScenarioChallenge'}">

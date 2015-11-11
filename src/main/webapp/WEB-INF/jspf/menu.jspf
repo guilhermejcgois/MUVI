@@ -7,18 +7,20 @@
         <article>
             <nav>
                 <ul>
-                    <li>Cenários</li>
+                    <li>Temáticas</li>
                     <li>
                         <ul>
-							<c:forEach items="${museum.scenarios}" var="scenario" step="2">
-								<li id="menu-li" <!--class="clickable"-->${scenario.name}</li>
-								<!--<li id="menu-lili">
+							<c:forEach items="${museum.themes}" var="theme">
+								<li id="menu-li" class="clickable">${theme.name}</li>
+								<li id="menu-lili">
 									<ul>
-								<c:forEach items="${scenario.objects}" var="object">
-									<li>${object.name}</li>
-								</c:forEach>
-						</ul>
-					</li>-->
+										<c:forEach items="${museum.scenarios}" var="scenario">
+											<c:if test="${scenario.theme.id == theme.id}">
+												<li>${scenario.name}</li>
+												</c:if>
+											</c:forEach>
+									</ul>
+								</li>
 							</c:forEach>
                         </ul>
                     </li>
@@ -31,7 +33,7 @@
                 <li>
                     <ul>
                         <li>O projeto</li>
-                        <li>O munseu</li>
+                        <li>O museu</li>
                         <li>A equipe</li>
                     </ul>
                 </li>

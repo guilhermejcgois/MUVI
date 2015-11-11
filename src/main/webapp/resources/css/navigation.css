@@ -97,7 +97,7 @@ a.nav-sce-btn {
 	font-size: 14px;
 	width: 100px;
 	text-align: right;
-	
+
 }
 #object-section footer {
 	position: absolute;
@@ -137,4 +137,8 @@ div.nav-sce-location {
 }
 nav li:not(:first-child):not(:last-child) div {
 	background-color: #456789;
+}
+.without-more {
+	height: 95%;
+	max-height: 95%;
 }

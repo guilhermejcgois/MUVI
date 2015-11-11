@@ -23,8 +23,8 @@
             <article>
                 <h1>${museum.name}</h1>
                 <div>
-                    <a class="button button-home" href="/muvi/navegar?mode=aleatory"><p>Aleatória</p></a><!--
-                    --><a class="button button-home" href="/muvi/navegar?mode=guided"><p>Guiada</p></a>
+                    <!--<a class="button button-home" href="/muvi/navegar?mode=aleatory"><p>Aleatória</p></a>
+                    --><a class="button button-home" href="/muvi/navegar?mode=guided"><p>Navegação Guiada</p></a>
                 </div>
             </article>
         </section>
