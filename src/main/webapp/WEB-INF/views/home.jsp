@@ -15,7 +15,11 @@
         <c:url value="/resources/css/main.css" var="maincss"/>
         <link href="${maincss}" rel="stylesheet">
 
-        <c:url value="/resources/css/home.css" var="homecss"/>
+        <c:url value="/resources/css/landscape/home.css" var="landhomecss"/>
+        <link href="${landhomecss}" rel="stylesheet" media="screen and (orientation: landscape)">
+		<c:url value="/resources/css/portrait/home.css" var="porthomecss"/>
+        <link href="${porthomecss}" rel="stylesheet" media="screen and (orientation: portrait)">
+		<c:url value="/resources/css/home.css" var="homecss"/>
         <link href="${homecss}" rel="stylesheet">
     </head>
     <body>
