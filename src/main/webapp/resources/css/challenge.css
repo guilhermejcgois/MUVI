@@ -67,16 +67,19 @@
 }
 #challenge-section article > .alternative:last-child {
     top: 23%;
-    right: 15%;
+	right: 15%;
 }
 #challenge-section .selected {
-    border: 1px solid yellow;
+    border: 3px solid yellow;
+	box-shadow: 0 0 10px yellow;
 }
 #challenge-section .correct {
-    border: 1px solid green;
+    border: 3px solid green;
+	box-shadow: 0 0 10px green;
 }
 #challenge-section .wrong {
-    border: 1px solid red;
+    border: 3px solid red;
+	box-shadow: 0 0 10px red;
 }
 #challenge-section footer {
     position: absolute;

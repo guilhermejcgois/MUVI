@@ -50,11 +50,11 @@
 							<a id="amore" href="#">Saiba mais...</a>
 						</c:if>
 					</article>
-					
-						<footer class="hide">
-							<div id="divmore">${items.toKnowMore.text}</div>
-						</footer>
-					
+
+					<footer class="hide">
+						<div id="divmore">${items.toKnowMore.text}</div>
+					</footer>
+
 				</section>
 				<img id="image" src="${items.image.urlAddress}"/>
 				<!--<small>${items.image.name}</small>-->
@@ -149,6 +149,16 @@
 
 			function alternativeClicked(event) {
 				var target = event.target || event.srcElement;
+				console.log(target.tagName);
+				if (target.tagName) {
+					if (target.tagName === 'P') {
+						target.parentElement.click();
+						return;
+					}
+					console.log(target.tagName);
+				} else {
+					return;
+				}
 
 				for (var i = 0; i < alternativesdiv.length; i++)
 					if (alternativesdiv[i] === target)
@@ -158,7 +168,7 @@
 							DOMUtils.addClass(target, "selected");
 					else if (DOMUtils.containClass(alternativesdiv[i], "selected"))
 						DOMUtils.removeClass(alternativesdiv[i], "selected");
-			}	
+			}
 			;
 
 			var alternativesdiv = document.getElementsByClassName('alternative');
@@ -184,13 +194,13 @@
 				var challengebutton = document.getElementById('challenge').children[0];
 				if (DOMUtils.containClass(target, "verified")) {
 					DOMUtils.addClass(document.getElementById('challenge-section'), "hide");
-					
+
 				} else {
 					for (i = 0; i < alternativesdiv.length; i++) {
 						if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
 							DOMUtils.removeClass(alternativesdiv[i], "wrong");
 						if (DOMUtils.containClass(alternativesdiv[i], "selected")) {
-							
+
 							if (i == 0/*alternativesdiv[i].children[0].innerHTML === '${challenge.correctAnswer.description}'*/) {
 								if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
 									DOMUtils.removeClass(alternativesdiv[i], "wrong")
@@ -232,6 +242,6 @@
 				}
 			});
 		</script>
-		
+
 	</body>
 </html>
