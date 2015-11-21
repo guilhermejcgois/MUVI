@@ -6,7 +6,6 @@
 			<h2>${challenge.description}</h2>
 		</header>
 		<article>
-			${Collections.shuffle(challenge.answers)}
 			<c:forEach items="${challenge.answers}" var="answer">
 				<div class="alternative"><p>${answer.description}</p></div>
 			</c:forEach>

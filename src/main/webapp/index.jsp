@@ -8,7 +8,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-		<jsp:include page="WEB-INF/views/fragments/menu.xhtml"></jsp:include>
         <h1>Hello World!</h1>
     </body>
 </html>

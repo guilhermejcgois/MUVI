@@ -42,3 +42,12 @@ ul {
 .button:active {
 	background-color: #234567;
 }
+.disabled {
+	background-color: gray;
+}
+.disabled:hover {
+	background-color: gray;
+}
+.disabled:active {
+	background-color: gray;
+}

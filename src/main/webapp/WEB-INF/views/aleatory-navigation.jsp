@@ -1,6 +1,6 @@
 <%-- 
-	Document   : guided-navigation
-	Created on : 08/10/2015, 13:21:57
+	Document   : aleatory-navigation
+	Created on : 20/11/2015, 23:50:37
 	Author     : Guilherme JC Gois
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>MUVI - Visita Guiada</title>
+		<title>MUVI - Visita Aleatória</title>
 
 		<c:url value="/resources/css/challenge.css" var="challengecss"/>
 		<c:url value="/resources/css/main.css" var="maincss"/>
@@ -29,14 +29,14 @@
 
 	</head>
 	<body>
-		<%@ include file="../jspf/menu-guided.jspf" %>
+		<%@ include file="../jspf/menu-aleatory.jspf" %>
 
 		<section id="object-section">
 			<nav>
 				<ul>
-					<li><div id="backto" class="button <c:if test="${!hasPrevious}">hide</c:if>"><a id="abackto" href="/muvi/navegar/g/anterior" class="nav-sce-btn">#</a></div></li>
+					<li><div id="backto" class="button <c:if test="${!hasPrevious}">hide</c:if>"><a id="abackto" href="/muvi/navegar/a/anterior" class="nav-sce-btn">#</a></div></li>
 					<li><div id="state" class="nav-sce-location">${atual} de ${numItems}</div></li>
-					<li><div id="goto" class=" button <c:if test="${!hasNext}">hide</c:if>"><a id="agoto" href="/muvi/navegar/g/proximo" class="nav-sce-btn">#</a></div></li>
+					<li><div id="goto" class=" button <c:if test="${!hasNext}">hide</c:if>"><a id="agoto" href="/muvi/navegar/a/proximo" class="nav-sce-btn">#</a></div></li>
 					</ul>
 				</nav>
 			<%@ include file="../jspf/navigation-board.jspf" %>

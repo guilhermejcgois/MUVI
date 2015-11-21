@@ -59,34 +59,21 @@ var MUVI = MUVI || {
 	cenariosMenu: function (event) {
 		// TODO refatorar
 		var target = event.target || event.srcElement;
-		var li1 = document.getElementById('menu-li1');
-		var lili1 = document.getElementById('menu-lili1');
-		var li2 = document.getElementById('menu-li2');
-		var lili2 = document.getElementById('menu-lili2');
+		var lis = document.getElementsByClassName('menu-li');
+		var lilis = document.getElementsByClassName('menu-lili');
 
-		if (target.id === 'menu-li1') {
-			if (containClass(li2, "opened")) {
-				removeClass(li2, "opened");
-				removeClass(lili2, "show");
-			}
-			if (containClass(li1, "opened")) {
-				removeClass(li1, "opened");
-				removeClass(lili1, "show");
-			} else {
-				addClass(li1, "opened");
-				addClass(lili1, "show");
-			}
-		} else if (target.id === 'menu-li2') {
-			if (containClass(li1, "opened")) {
-				removeClass(li1, "opened");
-				removeClass(lili1, "show");
-			}
-			if (containClass(li2, "opened")) {
-				removeClass(li2, "opened");
-				removeClass(lili2, "show");
-			} else {
-				addClass(li2, "opened");
-				addClass(lili2, "show");
+		for (i = 0; i < lis.length; i++) {
+			if (lis[i] === target) {
+				if (containClass(li[i], "opened")) {
+					removeClass(li[i], "opened");
+					removeClass(lili[i], "show");
+				} else {
+					addClass(li[i], "opened");
+					addClass(lili[i], "show");
+				}
+			} else if (containClass(lis[i], "opened")) {
+				removeClass(lis[i], "opened");
+				removeClass(lilis[i], "show");
 			}
 		}
 	}

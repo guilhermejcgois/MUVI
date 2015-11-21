@@ -31,6 +31,6 @@
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>WEB-INF/views/home.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

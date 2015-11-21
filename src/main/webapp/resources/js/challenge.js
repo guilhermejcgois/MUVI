@@ -1,4 +1,137 @@
 (function () {
+	
+	var challengeClicked = function (event) {
+		console.log('challenge click');
+
+		DOMUtils.removeClass(document.getElementById('challenge-section'), "hide");
+
+		var cancelButton = document.getElementById('challenge-cancel');
+		if (DOMUtils.containClass(cancelButton, "disabled")) {
+			DOMUtils.removeClass(cancelButton, "disabled");
+			cancelButton.addEventListener("click", cancelListener);
+
+			for (var i = 0; i < alternativesdiv.length; i++) {
+				console.log('Adding event listener to alternative ' + i);
+				alternativesdiv[i].addEventListener("click", alternativeClicked);
+			}
+		}
+	}
+
+	var challengeButton = document.getElementById('challenge');
+	challengeButton.addEventListener("click", challengeClicked);
+
+	var alternativeClicked = function (event) {
+		var target = event.target || event.srcElement;
+		console.log(target.tagName);
+		if (target.tagName) {
+			if (target.tagName === 'P') {
+				target.parentElement.click();
+				return;
+			}
+			console.log(target.tagName);
+		} else {
+			return;
+		}
+
+		for (var i = 0; i < alternativesdiv.length; i++) {
+			if (DOMUtils.containClass(target, "wrong"))
+				DOMUtils.removeClass(target, "wrong");
+
+			if (alternativesdiv[i] === target)
+				if (DOMUtils.containClass(target, "selected"))
+					DOMUtils.removeClass(target, "selected");
+				else
+					DOMUtils.addClass(target, "selected");
+			else if (DOMUtils.containClass(alternativesdiv[i], "selected"))
+				DOMUtils.removeClass(alternativesdiv[i], "selected");
+		}
+	}
+	;
+
+	var alternativesdiv = document.getElementsByClassName('alternative');
+	for (var i = 0; i < alternativesdiv.length; i++) {
+		console.log('Adding event listener to alternative ' + i);
+		alternativesdiv[i].addEventListener("click", alternativeClicked);
+	}
+	;
+
+	var cancelListener = function cancelListener (event) {
+		console.log('challenge cancelado!');
+
+		DOMUtils.addClass(document.getElementById('challenge-section'), "hide");
+		DOMUtils.addClass(document.getElementById('challenge').children[0], "doneAndWrong");
+	};
+
+	document.getElementById('challenge-cancel').addEventListener("click", cancelListener);
+
+	document.getElementById('challenge-done').addEventListener("click", function (event) {
+		console.log('Challenge done!');
+
+		var target = (event.target || event.srcElement);
+		var challengebutton = document.getElementById('challenge').children[0];
+		if (DOMUtils.containClass(target, "verified")) {
+			DOMUtils.addClass(document.getElementById('challenge-section'), "hide");
+
+			for (var i = 0; i < alternativesdiv.length; i++) {
+				console.log('Removing event listener to alternative ' + i);
+				alternativesdiv[i].removeEventListener("click", alternativeClicked);
+			}
+			
+			challengeButton.children[0].innerHTML = 'Feito!';
+			challengeButton.removeEventListener("click", challengeClicked);
+			challengeButton.style.cursor = 'inherit';
+		} else {
+			for (i = 0; i < alternativesdiv.length; i++) {
+				if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
+					DOMUtils.removeClass(alternativesdiv[i], "wrong");
+				if (DOMUtils.containClass(alternativesdiv[i], "selected")) {
+
+					if (i == 0/*alternativesdiv[i].children[0].innerHTML === '${challenge.correctAnswer.description}'*/) {
+						if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
+							DOMUtils.removeClass(alternativesdiv[i], "wrong")
+						if (!DOMUtils.containClass(alternativesdiv[i], "correct"))
+							DOMUtils.addClass(alternativesdiv[i], "correct");
+						if (DOMUtils.containClass(challengebutton, "doneAndWrong"))
+							DOMUtils.removeClass(challengebutton, "doneAndWrong");
+						if (!DOMUtils.containClass(challengebutton, "doneAndCorrect"))
+							DOMUtils.addClass(challengebutton, "doneAndCorrect");
+						target.innerHTML = 'Finalizar';
+
+						DOMUtils.addClass(document.getElementById('challenge-cancel'), "disabled");
+						DOMUtils.addClass(target, "verified");
+						document.getElementById('challenge-cancel').removeEventListener(cancelListener);
+						for (var i = 0; i < alternativesdiv.length; i++) {
+							console.log('Adding event listener to alternative ' + i);
+							alternativesdiv[i].removeEventListener("click", alternativeClicked);
+						}
+					} else {
+						/*
+						if (DOMUtils.containClass(alternativesdiv[i], "correct"))
+							DOMUtils.removeClass(alternativesdiv[i], "correct")
+						*/
+						if (!DOMUtils.containClass(alternativesdiv[i], "wrong"))
+							DOMUtils.addClass(alternativesdiv[i], "wrong");
+						/*
+						if (DOMUtils.containClass(challengebutton, "doneAndCorrect"))
+							DOMUtils.removeClass(challengebutton, "doneAndCorrect");
+						*/
+						if (!DOMUtils.containClass(challengebutton, "doneAndWrong"))
+							DOMUtils.addClass(challengebutton, "doneAndWrong");
+
+						//DOMUtils.removeClass(document.getElementById('challenge-cancel'), "disabled");
+						/*
+						document.getElementById('challenge-cancel').addEventListener(cancelListener);
+						for (var i = 0; i < alternativesdiv.length; i++) {
+							console.log('Adding event listener to alternative ' + i);
+							alternativesdiv[i].addEventListener("click", alternativeClicked);
+						}
+						*/
+					}
+				} else if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
+					DOMUtils.removeClass(alternativesdiv[i], "wrong");
+			}
+		}
+	});
 
 	/*var currentItem = 1;
 	 
@@ -71,6 +204,6 @@
 	 console.log('finish clicked');
 	 });*/
 
-	
+
 
 })();

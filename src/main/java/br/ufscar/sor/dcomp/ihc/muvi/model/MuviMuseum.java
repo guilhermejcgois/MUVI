@@ -108,4 +108,8 @@ public class MuviMuseum extends Museum {
 		}
 	}
 
+	public List<Theme> getThemes() {
+		return themes;
+	}
+
 }
