@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<article>
+<article id="item">
 	<section>
 		<header>
 			<h1 id="title">${items.text.name}</h1>
@@ -11,7 +11,7 @@
 			</c:if>
 		</article>
 
-		<footer class="hide">
+		<footer id="object-footer" class="hide">
 			<div id="divmore">${items.toKnowMore.text}</div>
 		</footer>
 

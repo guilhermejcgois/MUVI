@@ -58,7 +58,7 @@ public class HomeViewTest {
 		/* h1 */
 		h1 = driver.findElement(new By.ByTagName("h1"));
 		assertNotNull(h1);
-		assertEquals(expected.get("museumName"), h1.getText());
+		assertEquals(expected.get("museumname"), h1.getText());
 		/* /h1 */
 
 		/* div */
@@ -99,7 +99,7 @@ public class HomeViewTest {
 		assertEquals(expected.get("paleatory"), ap.getText());
 		a.click();
 		
-		assertEquals(expected.get("titleAleatory"), driver.getTitle());
+		assertEquals(expected.get("titlealeatory"), driver.getTitle());
 	}
 
 	@Test
@@ -114,6 +114,6 @@ public class HomeViewTest {
 		assertEquals(expected.get("pguided"), ap.getText());
 		a.click();
 		
-		assertEquals(expected.get("titleGuided"), driver.getTitle());
+		assertEquals(expected.get("titleguided"), driver.getTitle());
 	}
 }

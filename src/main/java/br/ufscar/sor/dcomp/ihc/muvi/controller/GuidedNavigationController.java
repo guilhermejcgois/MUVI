@@ -7,6 +7,7 @@ import com.lpsmuseum.service.MuseumService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -25,23 +26,23 @@ public class GuidedNavigationController {
 	}
 
 	@RequestMapping("navegar/g/proximo")
-	public ModelAndView next(HttpServletRequest request) {
+	public ModelAndView next(HttpServletRequest request, @RequestParam(required = false) Node node) {
 		System.out.println("Indo para o próximo cenário...");
 		
-		Node navigationNode = (Node) request.getSession().getAttribute("navigationNode");
+		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.getNeighbor();
-		request.getSession().setAttribute("navigationNode", navigationNode);
+		//request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}
 
 	@RequestMapping("navegar/g/anterior")
-	public ModelAndView back(HttpServletRequest request) {
+	public ModelAndView back(HttpServletRequest request, @RequestParam(required = false) Node node) {
 		System.out.println("Indo para o cenário anterior...");
 		
-		Node navigationNode = (Node) request.getSession().getAttribute("navigationNode");
+		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.doBacktrack();
-		request.getSession().setAttribute("navigationNode", navigationNode);
+		//request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}

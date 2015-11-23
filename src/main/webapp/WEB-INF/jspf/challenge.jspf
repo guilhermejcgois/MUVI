@@ -3,9 +3,9 @@
 <section id="challenge-section" class="hide">
 	<section>
 		<header>
-			<h2>${challenge.description}</h2>
+			<h2 id="challenge-title">${challenge.description}</h2>
 		</header>
-		<article>
+		<article id="alternatives">
 			<c:forEach items="${challenge.answers}" var="answer">
 				<div class="alternative"><p>${answer.description}</p></div>
 			</c:forEach>

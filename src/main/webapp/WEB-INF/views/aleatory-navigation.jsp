@@ -36,7 +36,7 @@
 				<ul>
 					<li><div id="backto" class="button <c:if test="${!hasPrevious}">hide</c:if>"><a id="abackto" href="/muvi/navegar/a/anterior" class="nav-sce-btn">#</a></div></li>
 					<li><div id="state" class="nav-sce-location">${atual} de ${numItems}</div></li>
-					<li><div id="goto" class=" button <c:if test="${!hasNext}">hide</c:if>"><a id="agoto" href="/muvi/navegar/a/proximo" class="nav-sce-btn">#</a></div></li>
+					<li><div id="goto" class="button <c:if test="${!hasNext}">hide</c:if>"><a id="agoto" href="/muvi/navegar/a/proximo" class="nav-sce-btn">#</a></div></li>
 					</ul>
 				</nav>
 			<%@ include file="../jspf/navigation-board.jspf" %>
