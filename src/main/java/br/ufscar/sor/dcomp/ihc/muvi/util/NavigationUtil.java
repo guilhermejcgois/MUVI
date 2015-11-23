@@ -73,7 +73,7 @@ public class NavigationUtil {
 		mv.addObject("hasNext", haveNeighbor(navigationNode));
 		System.out.println("-----------------------------------------");
 		
-		mv.addObject("atual", getCurrentIndex(museum, navigationNode));
+		mv.addObject("atual", getCurrentIndex(museum, navigationNode) + 1);
 		mv.addObject("numItems", museum.getScenarios().size());
 		
 		return mv;

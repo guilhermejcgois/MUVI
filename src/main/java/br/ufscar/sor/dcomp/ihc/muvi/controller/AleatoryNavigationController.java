@@ -26,32 +26,34 @@ public class AleatoryNavigationController {
 	}
 
 	@RequestMapping("navegar/a/proximo")
-	public ModelAndView next(HttpServletRequest request) {
+	public ModelAndView next(HttpServletRequest request, @RequestParam(required = false) Node node) {
 		System.out.println("Indo para o próximo cenário...");
 		
-		Node navigationNode = (Node) request.getSession().getAttribute("navigationNode");
+		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.getNeighbor();
-		request.getSession().setAttribute("navigationNode", navigationNode);
+		//request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}
 
 	@RequestMapping("navegar/a/anterior")
-	public ModelAndView back(HttpServletRequest request) {
+	public ModelAndView back(HttpServletRequest request, @RequestParam(required = false) Node node) {
 		System.out.println("Indo para o cenário anterior...");
 		
-		Node navigationNode = (Node) request.getSession().getAttribute("navigationNode");
+		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.doBacktrack();
-		request.getSession().setAttribute("navigationNode", navigationNode);
+		//request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}
 	
 	@RequestMapping("navegar/a/ir")
-	public ModelAndView goToScenario(HttpServletRequest request, @RequestParam(value = "para") Long scenarioId) {
+	public ModelAndView goToScenario(HttpServletRequest request, 
+			@RequestParam(value = "para") Long scenarioId, 
+			@RequestParam(required = false) Node node) {
 		System.out.println("Indo para o cenário de id " + scenarioId);
 		
-		Node navigationNode = (Node) request.getSession().getAttribute("navigationNode");
+		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		
 		if (navigationNode.getScenario().getId() < scenarioId)
 			while (navigationNode.getScenario().getId() != scenarioId)
@@ -60,7 +62,7 @@ public class AleatoryNavigationController {
 			while (navigationNode.getScenario().getId() != scenarioId)
 				navigationNode = navigationNode.doBacktrack();
 		
-		request.getSession().setAttribute("navigationNode", navigationNode);
+		//request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}

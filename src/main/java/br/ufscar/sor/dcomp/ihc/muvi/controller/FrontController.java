@@ -28,6 +28,13 @@ public class FrontController {
 
 	public FrontController() {
 		museumService = new MuseumService();
+		
+		/** Achamos que a interface de Museum para uso poderia ser um pouco melhor, 
+		 * tais possíveis melhorias foram feitas na especialização em MuviMuseum, 
+		 * fizemos issso para não mexer diretamente na linha.
+		 * FIX Gambiarra.
+		*/
+		museum = new MuviMuseum(museumService.listMuseum().get(0));
 	}
 
 	@RequestMapping("/")
@@ -36,13 +43,6 @@ public class FrontController {
 
 		System.out.println("Inicializando museu...");
 		
-		/*
-		Achamos que a interface de Museum para uso poderia ser um pouco melhor, 
-		tais possíveis melhorias foram feitas na especialização em MuviMuseum, 
-		fizemos issso para não mexer diretamente na linha.
-		FIX Gambiarra.
-		*/
-		museum = new MuviMuseum(museumService.listMuseum().get(0));
 		modelAndView.addObject("museum", museum);
 		
 		numItems = museum.getScenarios().size();
@@ -74,6 +74,12 @@ public class FrontController {
 		
 		Node navigationNode = null;
 		if (mode.equals("aleatory")) {
+			/** Descrição de navegação dada em sala pelo grupo não bate com a 
+			 * implementada na LPS, a apresentada diz que a basicamente a única 
+			 * diferença da navegação aleatória para a guiada é que na 
+			 * aleatória o usuário tem liberdade para onde ele quer ir.
+			 * museum.setNavigation(new AleatoryNavigation());
+			 */
 			museum.setNavigation(new AleatoryNavigation());
 			view = "aleatory-navigation";
 		} else if (mode.equals("guided")) {
@@ -86,7 +92,7 @@ public class FrontController {
 		}
 		navigationNode = museum.navigate();
 		
-		request.getSession(true).setAttribute("navigationNode", navigationNode);
+		//request.getSession(true).setAttribute("navigationNode", navigationNode);
 
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}

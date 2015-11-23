@@ -16,7 +16,7 @@
 									<ul>
 										<c:forEach items="${museum.scenarios}" var="scenario">
 											<c:if test="${scenario.theme.id == theme.id}">
-												<li <c:if test="${museum.navigation.class.name == 'com.lpsmuseum.behaviour.museum.navigation.AleatoryNavigation'}">class="clickable"</c:if>>${scenario.name}</li>
+												<li>${scenario.name}</li>
 												</c:if>
 											</c:forEach>
 									</ul>

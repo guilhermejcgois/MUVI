@@ -49,7 +49,7 @@ public class MuviMuseum extends Museum {
 		Node node;
 		if (museum.getNavigation() instanceof AleatoryNavigation) {
 			// Adaptado de AleatoryNavigation.getNavigation
-			node = getNavigation(scenarios, true);
+			node = getNavigation(scenarios, false);
 		} else if (museum.getNavigation() instanceof GuidedNavigation) {
 			// Adpatado de GuidedNavigation.getNavigation
 			node = getNavigation(scenarios, false);

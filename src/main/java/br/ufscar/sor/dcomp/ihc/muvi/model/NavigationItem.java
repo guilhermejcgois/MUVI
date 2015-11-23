@@ -4,7 +4,6 @@ import com.lpsmuseum.dto.MuseologicalObject;
 import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.dto.object.Image;
 import com.lpsmuseum.dto.object.Text;
-import java.util.List;
 
 /**
  *

@@ -57,7 +57,8 @@ var MUVI = MUVI || {
 		});
 	},
 	cenariosMenu: function (event) {
-		// TODO refatorar
+		console.log('cenariosMenu');
+		
 		var target = event.target || event.srcElement;
 		var lis = document.getElementsByClassName('menu-li');
 		var lilis = document.getElementsByClassName('menu-lili');
