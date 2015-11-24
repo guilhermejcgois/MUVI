@@ -31,7 +31,7 @@ public class GuidedNavigationController {
 		
 		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.getNeighbor();
-		//request.getSession().setAttribute("navigationNode", navigationNode);
+		request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}
@@ -42,7 +42,7 @@ public class GuidedNavigationController {
 		
 		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.doBacktrack();
-		//request.getSession().setAttribute("navigationNode", navigationNode);
+		request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}

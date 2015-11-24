@@ -92,8 +92,10 @@ public class FrontController {
 		}
 		navigationNode = museum.navigate();
 		
-		//request.getSession(true).setAttribute("navigationNode", navigationNode);
-
+		request.getSession(true).setAttribute("navigationNode", navigationNode);
+		
+		System.out.println(navigationNode.getScenario().getName());
+		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}
 

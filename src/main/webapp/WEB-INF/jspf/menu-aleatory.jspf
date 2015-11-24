@@ -7,7 +7,7 @@
 		<article>
 			<nav>
 				<ul>
-					<li>Temáticas</li>
+					<li>Lei de Diretrizes e Base</li>
 					<li>
 						<ul>
 							<c:forEach items="${museum.themes}" var="theme">
@@ -16,7 +16,7 @@
 									<ul>
 										<c:forEach items="${museum.scenarios}" var="scenario">
 											<c:if test="${scenario.theme.id == theme.id}">
-												<li class="clickable"><a href="/muvi/navegar/a/ir?para=${scenario.id}">${scenario.name}</a></li>
+												<li><a class="clickable" href="/muvi/navegar/a/ir?para=${scenario.id}">${scenario.name}</a></li>
 												</c:if>
 											</c:forEach>
 									</ul>

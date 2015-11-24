@@ -7,7 +7,7 @@
 		<article>
 			<nav>
 				<ul>
-					<li>Temáticas</li>
+					<li>Lei de Diretrizes e Base</li>
 					<li>
 						<ul>
 							<c:forEach items="${museum.themes}" var="theme">

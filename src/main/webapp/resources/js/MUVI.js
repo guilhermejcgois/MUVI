@@ -65,16 +65,16 @@ var MUVI = MUVI || {
 
 		for (i = 0; i < lis.length; i++) {
 			if (lis[i] === target) {
-				if (containClass(li[i], "opened")) {
-					removeClass(li[i], "opened");
-					removeClass(lili[i], "show");
+				if (DOMUtils.containClass(lis[i], "opened")) {
+					DOMUtils.removeClass(lis[i], "opened");
+					DOMUtils.removeClass(lilis[i], "show");
 				} else {
-					addClass(li[i], "opened");
-					addClass(lili[i], "show");
+					DOMUtils.addClass(lis[i], "opened");
+					DOMUtils.addClass(lilis[i], "show");
 				}
-			} else if (containClass(lis[i], "opened")) {
-				removeClass(lis[i], "opened");
-				removeClass(lilis[i], "show");
+			} else if (DOMUtils.containClass(lis[i], "opened")) {
+				DOMUtils.removeClass(lis[i], "opened");
+				DOMUtils.removeClass(lilis[i], "show");
 			}
 		}
 	}

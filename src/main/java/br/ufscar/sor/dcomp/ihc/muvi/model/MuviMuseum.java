@@ -57,6 +57,8 @@ public class MuviMuseum extends Museum {
 			node = null;
 		}
 		setScenarios(museum.getScenarios());
+		System.out.println(node.getScenario().getName());
+		
 		return node;
 	}
 

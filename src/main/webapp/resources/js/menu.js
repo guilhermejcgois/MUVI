@@ -12,7 +12,7 @@
 
 	var clickables = document.getElementsByClassName('menu-li clickable');
 	console.log(clickables);
-	for (var i = 0; i < clickables.lengthgth; i++) {
+	for (var i = 0; i < clickables.length; i++) {
 		clickables[i].addEventListener("click", MUVI.cenariosMenu);
 	}
 	;

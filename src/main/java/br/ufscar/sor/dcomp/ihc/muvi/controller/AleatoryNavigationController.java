@@ -31,7 +31,7 @@ public class AleatoryNavigationController {
 		
 		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.getNeighbor();
-		//request.getSession().setAttribute("navigationNode", navigationNode);
+		request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}
@@ -42,7 +42,7 @@ public class AleatoryNavigationController {
 		
 		Node navigationNode = (node != null) ? node : (Node) request.getSession().getAttribute("navigationNode");
 		navigationNode = navigationNode.doBacktrack();
-		//request.getSession().setAttribute("navigationNode", navigationNode);
+		request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}
@@ -62,7 +62,7 @@ public class AleatoryNavigationController {
 			while (navigationNode.getScenario().getId() != scenarioId)
 				navigationNode = navigationNode.doBacktrack();
 		
-		//request.getSession().setAttribute("navigationNode", navigationNode);
+		request.getSession().setAttribute("navigationNode", navigationNode);
 		
 		return NavigationUtil.getModelAndView(view, museum, navigationNode);
 	}

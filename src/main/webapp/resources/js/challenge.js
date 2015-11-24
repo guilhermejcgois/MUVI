@@ -15,7 +15,7 @@
 				alternativesdiv[i].addEventListener("click", alternativeClicked);
 			}
 		}
-	}
+	};
 
 	var challengeButton = document.getElementById('challenge');
 	challengeButton.addEventListener("click", challengeClicked);
@@ -34,8 +34,8 @@
 		}
 
 		for (var i = 0; i < alternativesdiv.length; i++) {
-			if (DOMUtils.containClass(target, "wrong"))
-				DOMUtils.removeClass(target, "wrong");
+			if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
+				DOMUtils.removeClass(alternativesdiv[i], "wrong");
 
 			if (alternativesdiv[i] === target)
 				if (DOMUtils.containClass(target, "selected"))
@@ -60,6 +60,13 @@
 
 		DOMUtils.addClass(document.getElementById('challenge-section'), "hide");
 		DOMUtils.addClass(document.getElementById('challenge').children[0], "doneAndWrong");
+		
+		for (var i = 0; i < alternativesdiv.length; i++) {
+			if (DOMUtils.containClass(alternativesdiv[i], "wrong"))
+				DOMUtils.removeClass(alternativesdiv[i], "wrong");
+			else if (DOMUtils.containClass(alternativesdiv[i], "selected"))
+				DOMUtils.removeClass(alternativesdiv[i], "selected");
+		}
 	};
 
 	document.getElementById('challenge-cancel').addEventListener("click", cancelListener);
@@ -99,7 +106,7 @@
 
 						DOMUtils.addClass(document.getElementById('challenge-cancel'), "disabled");
 						DOMUtils.addClass(target, "verified");
-						document.getElementById('challenge-cancel').removeEventListener(cancelListener);
+						document.getElementById('challenge-cancel').removeEventListener("click", cancelListener);
 						for (var i = 0; i < alternativesdiv.length; i++) {
 							console.log('Adding event listener to alternative ' + i);
 							alternativesdiv[i].removeEventListener("click", alternativeClicked);
@@ -114,10 +121,10 @@
 						/*
 						if (DOMUtils.containClass(challengebutton, "doneAndCorrect"))
 							DOMUtils.removeClass(challengebutton, "doneAndCorrect");
-						*/
+						
 						if (!DOMUtils.containClass(challengebutton, "doneAndWrong"))
 							DOMUtils.addClass(challengebutton, "doneAndWrong");
-
+						*/
 						//DOMUtils.removeClass(document.getElementById('challenge-cancel'), "disabled");
 						/*
 						document.getElementById('challenge-cancel').addEventListener(cancelListener);

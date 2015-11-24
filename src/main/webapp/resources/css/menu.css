@@ -122,3 +122,13 @@ section#menu footer {
 	cursor: hand;
 	cursor: pointer;
 }
+a.clickable:link, 
+a.clickable:visited,  
+a.clickable:active {
+	color: #000;
+	text-decoration: none;
+}
+a.clickable:hover {
+	font-size: 18px;
+	text-decoration: underline;
+}
