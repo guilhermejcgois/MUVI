@@ -11,6 +11,7 @@ Foi levantado algumas informações ao final da apresentação do demo de nosso 
 * Trello não é SCRUM!!
 
 > Assim como na sprint passada, não seguimos a risca nosso processo, porém acreditamos que houve uma melhora, visto que estão sendo entregues artefatos que geramos com o scrum que não foram entregues na última sprint, este sprint review é uma delas. Mas ainda assim, no início da sprint esquecemos de fazer e formalizar nossa sprint planning.
+
 * Design
 
 > Como apontado pelo professor, e como produto de nosso esquecimento, o padrão de cores no menu não bate com o resto da aplicação. Porém isso já foi corrigido.
