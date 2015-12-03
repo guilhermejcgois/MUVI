@@ -6,6 +6,7 @@ import com.lpsmuseum.behaviour.museum.navigation.AleatoryNavigation;
 import com.lpsmuseum.behaviour.museum.navigation.GuidedNavigation;
 import com.lpsmuseum.behaviour.museum.navigation.Node;
 import com.lpsmuseum.dto.MuseologicalObject;
+import com.lpsmuseum.dto.Museum;
 import com.lpsmuseum.dto.Scenario;
 import com.lpsmuseum.dto.object.Image;
 import com.lpsmuseum.dto.object.Text;
@@ -26,7 +27,7 @@ public class FrontController {
 	private final MuseumService museumService;
 	private int numItems;
 
-	public FrontController() {
+	public FrontController() throws Exception {
 		museumService = new MuseumService();
 		
 		/** Achamos que a interface de Museum para uso poderia ser um pouco melhor, 
@@ -34,7 +35,10 @@ public class FrontController {
 		 * fizemos issso para não mexer diretamente na linha.
 		 * FIX Gambiarra.
 		*/
-		museum = new MuviMuseum(museumService.listMuseum().get(0));
+		Museum museum = museumService.findById(1L);
+		if (museum == null)
+			throw new Exception("Museum doesn't exist");
+		this.museum = new MuviMuseum(museum);
 	}
 
 	@RequestMapping("/")
@@ -90,7 +94,7 @@ public class FrontController {
 					+ "' is not allowed to navigation. Do you choose the "
 					+ "navigation's mode in our home page?");
 		}
-		navigationNode = museum.navigate();
+		navigationNode = museum.navigate().getNeighbor().getNeighbor().getNeighbor();
 		
 		request.getSession(true).setAttribute("navigationNode", navigationNode);
 		

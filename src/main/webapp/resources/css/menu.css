@@ -94,7 +94,7 @@ div#modal-div {
     width: 100%;
 }
 section#menu-section {
-    background-color: #aaa;
+    background-color: #78bc9a;
 }
 section#menu-section header {
     background-color: white;
@@ -110,7 +110,7 @@ section#menu-section article {
 	overflow-y: auto;
 }
 section#menu-section footer {
-    background-color: #777;
+    background-color: #458967;
     height: 150px;
     width: inherit;
     margin-top: 0;
